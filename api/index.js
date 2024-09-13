@@ -47,7 +47,7 @@ users.onSnapshot((snapshot) => {
 
 var { Liquid } = require('liquidjs');
 var engine = new Liquid({
-    root: __dirname + '/../views/'
+    root: path.join(__dirname, '..', 'views')
 });
 
 // register liquid engine
