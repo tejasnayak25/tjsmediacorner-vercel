@@ -204,6 +204,6 @@ app.route("/help")
     res.render("help", { title: "Help | TJ's Media Corner" });
 });
 
-app.listen(5500);
+app.listen(3000, () => console.log('Server ready on port 3000.'));
 
 module.exports = app;
