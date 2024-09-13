@@ -1,0 +1,6 @@
+node_modules
+serviceAccount.json
+api/serviceAccount.json
+js/login-auth.js
+js/account.js
+.vercel
