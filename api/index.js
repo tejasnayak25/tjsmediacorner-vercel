@@ -37,8 +37,9 @@ users.onSnapshot((snapshot) => {
             if (!document.doc.data().subscriptions) { // Check if the document is new
                 users.doc(document.doc.id).update({
                     subscriptions: [],
-                    purchased_credits: 50,
-                    ad_credits: 0
+                    tokens: 6000,
+                    image_credits: 50,
+                    voice_credits: 0
                 });
             }
         }
@@ -123,35 +124,145 @@ app.route("/about")
     res.render("about", { title: "About | TJ's Media Corner" });
 });
 
+app.route("/api/monthly-refresh")
+.get((req, res) => {
+    const batch = admin.firestore().batch();
+
+    let free_member = memberships.find(item => item.id === "Free");
+    let admin_member = memberships.find(item => item.id === "Admin");
+
+    users.where("subscriptions", "array-contains", "Admin").get()
+    .then(docs => {
+        docs.forEach(doc => {
+            batch.update(doc.ref, {
+                tokens: admin_member.tokens,
+                image_credits: admin_member.image_credits,
+                voice_credits: admin_member.voice_credits
+            });
+        });
+    });
+
+    users.where("subscriptions", "array-contains", "Free").get()
+    .then(docs => {
+        docs.forEach(doc => {
+            batch.update(doc.ref, {
+                tokens: free_member.tokens,
+                image_credits: free_member.image_credits,
+                voice_credits: free_member.voice_credits
+            });
+        });
+    });
+
+    batch.commit().then(()=>{
+        res.status(200).end();
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).end();
+    });
+});
+
 app.route('/api/membership')
 .post((req, res) => {
     // Access the JSON data from the request body
     const jsonData = req.body;
+    console.log(jsonData);
 
     if(req.headers["user-agent"] === "Ruby") {
         // Log the JSON data
-        if(memberships.find(item => item.id === jsonData.product_name)) {
+        let membership = memberships.find(item => item.id === jsonData.product_name);
+        let free_member = memberships.find(item => item.id === "Free");
+        if(membership) {
             try {
                 if(jsonData.resource_name === "sale") {
                     if(jsonData.refunded === "false") {
-                        users.doc(jsonData.email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
-                        });
+                        if(membership.type === "primary") {
+                            users.doc(jsonData.email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name),
+                                tokens: membership.tokens,
+                                image_credits: membership.image_credits,
+                                voice_credits: membership.voice_credits
+                            }).then(() => {
+                                users.doc(jsonData.email).update({
+                                    subscriptions: admin.firestore.FieldValue.arrayRemove("Free")
+                                });
+                            });
+                        } else {
+                            users.doc(jsonData.email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
+                            });
+                        }
                     }
                 } else if(jsonData.resource_name === "cancellation") {
                     if(jsonData.cancelled === "true") {
+                        if(membership.type === "primary") {
+                            users.doc(jsonData.user_email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name),
+                                tokens: free_member.tokens,
+                                image_credits: free_member.image_credits,
+                                voice_credits: free_member.voice_credits
+                            }).then(() => {
+                                users.doc(jsonData.email).update({
+                                    subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
+                                });
+                            });
+                        } else {
+                            users.doc(jsonData.user_email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name)
+                            });
+                        }
+                    }
+                } else if(jsonData.resource_name === "subscription_ended") {
+                    if(membership.type === "primary") {
+                        users.doc(jsonData.user_email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name),
+                            tokens: free_member.tokens,
+                            image_credits: free_member.image_credits,
+                            voice_credits: free_member.voice_credits
+                        }).then(() => {
+                            users.doc(jsonData.email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
+                            });
+                        });
+                    } else {
                         users.doc(jsonData.user_email).update({
                             subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name)
                         });
                     }
-                } else if(jsonData.resource_name === "subscription_ended") {
-                    users.doc(jsonData.user_email).update({
-                        subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name)
-                    });
                 } else if(jsonData.resource_name === "subscription_restarted") {
-                    users.doc(jsonData.user_email).update({
-                        subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
-                    });
+                    if(membership.type === "primary") {
+                        users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name),
+                            tokens: membership.tokens,
+                            image_credits: membership.image_credits,
+                            voice_credits: membership.voice_credits
+                        }).then(() => {
+                            users.doc(jsonData.email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free")
+                            });
+                        });
+                    } else {
+                        users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
+                        });
+                    }
+                } else if(jsonData.resource_name === "subscription_updated") {
+                    if(membership.type === "primary") {
+                        users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name),
+                            tokens: membership.tokens,
+                            image_credits: membership.image_credits,
+                            voice_credits: membership.voice_credits
+                        }).then(() => {
+                            users.doc(jsonData.email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free")
+                            });
+                        });
+                    } else {
+                        users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
+                        });
+                    }
                 }
             } catch(e) {
                 console.log("Error with membership API", e);
