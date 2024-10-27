@@ -162,7 +162,7 @@ app.route("/api/monthly-refresh")
     });
 });
 
-app.route('/api/membership')
+app.route('/api/gr-client')
 .post((req, res) => {
     // Access the JSON data from the request body
     const jsonData = req.body;
