@@ -20,13 +20,15 @@ let auth = fapp.auth();
 let users = firestore.collection("users");
 let membershipCollection = firestore.collection("memberships");
 
-let memberships = [];
+let memberships = [], new_member;
 membershipCollection.get().then(data => {
     memberships = data.docs.map(item => ({ id:item.id, data: item.data() }));
+    new_member = memberships.find(item => item.id === "New");
 });
 
 membershipCollection.onSnapshot((snapshot) => {
     memberships = snapshot.docs.map(item => ({ id:item.id, data: item.data() }));
+    new_member = memberships.find(item => item.id === "New");
 });
 
 users.onSnapshot((snapshot) => {
@@ -36,10 +38,10 @@ users.onSnapshot((snapshot) => {
         if(document.type === "added") {
             if (!document.doc.data().subscriptions) { // Check if the document is new
                 users.doc(document.doc.id).update({
-                    subscriptions: [],
-                    tokens: 6000,
-                    image_credits: 50,
-                    voice_credits: 0
+                    subscriptions: ["Free"],
+                    tokens: new_member.tokens ?? 6000,
+                    image_credits: new_member.image_credits ?? 50,
+                    voice_credits: new_member.voice_credits ?? 0
                 });
             }
         }
@@ -166,7 +168,6 @@ app.route('/api/gr-client')
 .post((req, res) => {
     // Access the JSON data from the request body
     const jsonData = req.body;
-    console.log(jsonData);
 
     if(req.headers["user-agent"] === "Ruby") {
         // Log the JSON data
