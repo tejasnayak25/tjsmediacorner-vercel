@@ -172,19 +172,23 @@ app.route('/api/gr-client')
         // Log the JSON data
         let membership = memberships.find(item => item.id === jsonData.product_name);
         let free_member = memberships.find(item => item.id === "Free");
+        let primary_member = memberships.find(item => item.data.type === "primary" && item.id !== "Free");
+        primary_member = primary_member.map(item => item.id);
+
         if(membership) {
             try {
                 if(jsonData.resource_name === "sale") {
                     if(jsonData.refunded === "false") {
                         if(membership.type === "primary") {
                             users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name),
+                                subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.Tier),
                                 tokens: membership.tokens,
                                 image_credits: membership.image_credits,
                                 voice_credits: membership.voice_credits
                             }).then(() => {
+                                let others = primary_member.filter(item => item !== jsonData.variants.Tier);
                                 users.doc(jsonData.email).update({
-                                    subscriptions: admin.firestore.FieldValue.arrayRemove("Free")
+                                    subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...others)
                                 });
                             });
                         } else {
@@ -197,7 +201,7 @@ app.route('/api/gr-client')
                     if(jsonData.cancelled === "true") {
                         if(membership.type === "primary") {
                             users.doc(jsonData.user_email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name),
+                                subscriptions: admin.firestore.FieldValue.arrayRemove(...primary_member),
                                 tokens: free_member.tokens,
                                 image_credits: free_member.image_credits,
                                 voice_credits: free_member.voice_credits
@@ -215,7 +219,7 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_ended") {
                     if(membership.type === "primary") {
                         users.doc(jsonData.user_email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name),
+                            subscriptions: admin.firestore.FieldValue.arrayRemove(...primary_member),
                             tokens: free_member.tokens,
                             image_credits: free_member.image_credits,
                             voice_credits: free_member.voice_credits
@@ -232,7 +236,7 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_restarted") {
                     if(membership.type === "primary") {
                         users.doc(jsonData.email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name),
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.tier ?? jsonData.variants.Tier),
                             tokens: membership.tokens,
                             image_credits: membership.image_credits,
                             voice_credits: membership.voice_credits
@@ -249,13 +253,13 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_updated") {
                     if(membership.type === "primary") {
                         users.doc(jsonData.email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name),
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier),
                             tokens: membership.tokens,
                             image_credits: membership.image_credits,
                             voice_credits: membership.voice_credits
                         }).then(() => {
                             users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free")
+                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier)
                             });
                         });
                     } else {
