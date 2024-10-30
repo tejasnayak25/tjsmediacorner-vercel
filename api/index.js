@@ -40,7 +40,7 @@ users.onSnapshot((snapshot) => {
                 users.doc(document.doc.id).update({
                     subscriptions: ["Free"],
                     tokens: new_member.tokens ?? 6000,
-                    image_credits: new_member.image_credits ?? 50,
+                    image_credits: new_member.image_credits ?? 30,
                     voice_credits: new_member.voice_credits ?? 0
                 });
             }
