@@ -159,11 +159,9 @@ console.log('Apps after initialization:', admin.apps);
     firestore = fapp.firestore();
     membershipCollection = firestore.collection("memberships");
 
-    let membershipQuery = membershipCollection.get().then(data => {
-    memberships = data.docs.map(item => ({ id:item.id, data: item.data() }));
-    new_member = memberships.find(item => item.id === "New");
-});
-    await Promise.all([membershipQuery]);
+    const data = await membershipCollection.get();
+memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
+new_member = memberships.find(item => item.id === "New");
 
     let free_member = memberships.find(item => item.id === "Free");
     let admin_member = memberships.find(item => item.id === "Admin");
