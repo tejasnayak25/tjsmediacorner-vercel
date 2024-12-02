@@ -126,7 +126,7 @@ app.route("/about")
     res.render("about", { title: "About | TJ's Media Corner" });
 });
 
-app.route("/api/monthly-refresh")
+app.route("/membership/monthly-refresh")
 .get((req, res) => {
     const batch = admin.firestore().batch();
 
