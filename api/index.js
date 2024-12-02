@@ -128,6 +128,7 @@ app.route("/about")
 
 app.route("/membership/monthly-refresh")
 .get((req, res) => {
+    let fapp = admin.app() ?? null;
     if (admin.apps.length === 0) {
     let serviceAccount = process.env.SERVICE_ACCOUNT;
 
@@ -142,14 +143,14 @@ app.route("/membership/monthly-refresh")
         serviceAccount = require("./serviceAccount.json");
     }
 
-    admin.initializeApp({
+    fapp = admin.initializeApp({
         credential: admin.credential.cert(serviceAccount)
     });
 }
 
 console.log('Apps after initialization:', admin.apps);
 
-    let fapp=admin.app();
+    // let fapp=admin.app();
     
     const batch = fapp.firestore().batch();
 
