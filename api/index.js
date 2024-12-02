@@ -165,8 +165,8 @@ memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
 
     // console.log(memberships);
 
-    let free_member = memberships.find(item => item.id === "Free");
-    let admin_member = memberships.find(item => item.id === "Admin");
+    let free_member = memberships.find(item => item.id === "Free").data;
+    let admin_member = memberships.find(item => item.id === "Admin").data;
 
     console.log(admin_member);
 
