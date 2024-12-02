@@ -128,6 +128,20 @@ app.route("/about")
 
 app.route("/membership/monthly-refresh")
 .get((req, res) => {
+    if (admin.apps.length === 0) {
+        serviceAccount = process.env.SERVICE_ACCOUNT;
+
+        if(serviceAccount) {
+            serviceAccount = JSON.parse(serviceAccount);
+        } else {
+            serviceAccount = require("./serviceAccount.json");
+        }
+        
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount)
+        }, 'admin');
+    }
+    
     const batch = admin.firestore().batch();
 
     let free_member = memberships.find(item => item.id === "Free");
