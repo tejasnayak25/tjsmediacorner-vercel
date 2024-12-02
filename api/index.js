@@ -161,14 +161,14 @@ console.log('Apps after initialization:', admin.apps);
 
     const data = await membershipCollection.get();
 memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
-new_member = memberships.find(item => item.id === "New");
+// new_member = memberships.find(item => item.id === "New");
 
     // console.log(memberships);
 
     let free_member = memberships.find(item => item.id === "Free");
     let admin_member = memberships.find(item => item.id === "Admin");
 
-    console.log(admin_query);
+    console.log(admin_member);
 
     let adminQuery = users.where("subscriptions", "array-contains", "Admin").get()
     .then(docs => {
