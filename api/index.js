@@ -148,8 +148,10 @@ app.route("/membership/monthly-refresh")
 }
 
 console.log('Apps after initialization:', admin.apps);
+
+    let fapp=admin.app();
     
-    const batch = admin.firestore().batch();
+    const batch = fapp.firestore().batch();
 
     let free_member = memberships.find(item => item.id === "Free");
     let admin_member = memberships.find(item => item.id === "Admin");
