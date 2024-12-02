@@ -128,7 +128,7 @@ app.route("/about")
 
 app.route("/membership/monthly-refresh")
 .get((req, res) => {
-    let fapp = admin.app() ?? null;
+    let fapp = null;
     if (admin.apps.length === 0) {
     let serviceAccount = process.env.SERVICE_ACCOUNT;
 
@@ -146,6 +146,8 @@ app.route("/membership/monthly-refresh")
     fapp = admin.initializeApp({
         credential: admin.credential.cert(serviceAccount)
     });
+} else {
+        fapp = admin.apps[0];
 }
 
 console.log('Apps after initialization:', admin.apps);
