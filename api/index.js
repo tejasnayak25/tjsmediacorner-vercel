@@ -129,18 +129,25 @@ app.route("/about")
 app.route("/membership/monthly-refresh")
 .get((req, res) => {
     if (admin.apps.length === 0) {
-        serviceAccount = process.env.SERVICE_ACCOUNT;
+    let serviceAccount = process.env.SERVICE_ACCOUNT;
 
-        if(serviceAccount) {
+    if (serviceAccount) {
+        try {
             serviceAccount = JSON.parse(serviceAccount);
-        } else {
-            serviceAccount = require("./serviceAccount.json");
+        } catch (error) {
+            console.error('Failed to parse SERVICE_ACCOUNT:', error);
+            throw new Error('Invalid SERVICE_ACCOUNT environment variable');
         }
-        
-        admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount)
-        }, 'admin');
+    } else {
+        serviceAccount = require("./serviceAccount.json");
     }
+
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+    }, 'admin');
+}
+
+console.log('Apps after initialization:', admin.apps);
     
     const batch = admin.firestore().batch();
 
