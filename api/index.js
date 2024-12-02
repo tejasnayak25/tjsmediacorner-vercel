@@ -127,7 +127,7 @@ app.route("/about")
 });
 
 app.route("/membership/monthly-refresh")
-.get((req, res) => {
+.get(async (req, res) => {
     let fapp = null;
     if (admin.apps.length === 0) {
     let serviceAccount = process.env.SERVICE_ACCOUNT;
@@ -156,10 +156,19 @@ console.log('Apps after initialization:', admin.apps);
     
     const batch = fapp.firestore().batch();
 
+    firestore = fapp.firestore();
+    membershipCollection = firestore.collection("memberships");
+
+    let membershipQuery = membershipCollection.get().then(data => {
+    memberships = data.docs.map(item => ({ id:item.id, data: item.data() }));
+    new_member = memberships.find(item => item.id === "New");
+});
+    await Promise.all([membershipQuery]);
+
     let free_member = memberships.find(item => item.id === "Free");
     let admin_member = memberships.find(item => item.id === "Admin");
 
-    users.where("subscriptions", "array-contains", "Admin").get()
+    let adminQuery = users.where("subscriptions", "array-contains", "Admin").get()
     .then(docs => {
         docs.forEach(doc => {
             batch.update(doc.ref, {
@@ -170,7 +179,7 @@ console.log('Apps after initialization:', admin.apps);
         });
     });
 
-    users.where("subscriptions", "array-contains", "Free").get()
+    let freeQuery = users.where("subscriptions", "array-contains", "Free").get()
     .then(docs => {
         docs.forEach(doc => {
             batch.update(doc.ref, {
@@ -180,6 +189,11 @@ console.log('Apps after initialization:', admin.apps);
             });
         });
     });
+
+    await Promise.all([adminQuery, freeQuery]);
+
+        // Commit the batch only after all updates are added
+        // await batch.commit();
 
     batch.commit().then(()=>{
         res.status(200).end();
