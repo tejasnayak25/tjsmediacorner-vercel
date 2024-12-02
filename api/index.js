@@ -163,10 +163,12 @@ console.log('Apps after initialization:', admin.apps);
 memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
 new_member = memberships.find(item => item.id === "New");
 
-    console.log(memberships);
+    /)console.log(memberships);
 
     let free_member = memberships.find(item => item.id === "Free");
     let admin_member = memberships.find(item => item.id === "Admin");
+
+    console.log(admin_query);
 
     let adminQuery = users.where("subscriptions", "array-contains", "Admin").get()
     .then(docs => {
