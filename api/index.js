@@ -144,7 +144,7 @@ app.route("/membership/monthly-refresh")
 
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount)
-    }, 'admin');
+    });
 }
 
 console.log('Apps after initialization:', admin.apps);
