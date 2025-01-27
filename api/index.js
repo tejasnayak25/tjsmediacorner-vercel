@@ -265,6 +265,7 @@ app.route('/api/gr-client')
                                 voice_credits: memData.voice_credits
                             }).then(() => {
                                 let others = primary_member.filter(item => item !== jsonData.variants.Tier);
+                                console.log(others);
                                 users.doc(jsonData.email).update({
                                     subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...others)
                                 });
