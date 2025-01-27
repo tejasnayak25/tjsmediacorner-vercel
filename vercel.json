@@ -3,7 +3,7 @@
 	"rewrites": [{ "source": "/(.*)", "destination": "/api" }],
 	"crons": [
 		{
-		"path": "/api/monthly-refresh",
+		"path": "/membership/monthly-refresh",
 		"schedule": "0 0 1 * *"
 		}
 	]

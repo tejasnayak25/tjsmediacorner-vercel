@@ -126,14 +126,51 @@ app.route("/about")
     res.render("about", { title: "About | TJ's Media Corner" });
 });
 
-app.route("/api/monthly-refresh")
-.get((req, res) => {
-    const batch = admin.firestore().batch();
+app.route("/membership/monthly-refresh")
+.get(async (req, res) => {
+    let fapp = null;
+    if (admin.apps.length === 0) {
+    let serviceAccount = process.env.SERVICE_ACCOUNT;
 
-    let free_member = memberships.find(item => item.id === "Free");
-    let admin_member = memberships.find(item => item.id === "Admin");
+    if (serviceAccount) {
+        try {
+            serviceAccount = JSON.parse(serviceAccount);
+        } catch (error) {
+            console.error('Failed to parse SERVICE_ACCOUNT:', error);
+            throw new Error('Invalid SERVICE_ACCOUNT environment variable');
+        }
+    } else {
+        serviceAccount = require("./serviceAccount.json");
+    }
 
-    users.where("subscriptions", "array-contains", "Admin").get()
+    fapp = admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+    });
+} else {
+        fapp = admin.apps[0];
+}
+
+console.log('Apps after initialization:', admin.apps);
+
+    // let fapp=admin.app();
+    
+    const batch = fapp.firestore().batch();
+
+    firestore = fapp.firestore();
+    membershipCollection = firestore.collection("memberships");
+
+    const data = await membershipCollection.get();
+memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
+// new_member = memberships.find(item => item.id === "New");
+
+    // console.log(memberships);
+
+    let free_member = memberships.find(item => item.id === "Free").data;
+    let admin_member = memberships.find(item => item.id === "Admin").data;
+
+    console.log(admin_member);
+
+    let adminQuery = users.where("subscriptions", "array-contains", "Admin").get()
     .then(docs => {
         docs.forEach(doc => {
             batch.update(doc.ref, {
@@ -144,7 +181,7 @@ app.route("/api/monthly-refresh")
         });
     });
 
-    users.where("subscriptions", "array-contains", "Free").get()
+    let freeQuery = users.where("subscriptions", "array-contains", "Free").get()
     .then(docs => {
         docs.forEach(doc => {
             batch.update(doc.ref, {
@@ -154,6 +191,11 @@ app.route("/api/monthly-refresh")
             });
         });
     });
+
+    await Promise.all([adminQuery, freeQuery]);
+
+        // Commit the batch only after all updates are added
+        // await batch.commit();
 
     batch.commit().then(()=>{
         res.status(200).end();
