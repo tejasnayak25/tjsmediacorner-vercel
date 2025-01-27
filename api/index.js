@@ -246,7 +246,7 @@ app.route('/api/gr-client')
         // Log the JSON data
         let membership = memberships.find(item => item.id === jsonData.product_name);
         let free_member = memberships.find(item => item.id === "Free");
-        let primary_member = memberships.find(item => item.data.type === "primary" && item.id !== "Free");
+        let primary_member = memberships.filter(item => item.data.type === "primary" && item.id !== "Free");
         primary_member = primary_member.map(item => item.id);
 
         if(membership) {
