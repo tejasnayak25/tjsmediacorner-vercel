@@ -256,6 +256,7 @@ app.route('/api/gr-client')
                     if(jsonData.refunded === "false") {
                         if(membership.type === "primary") {
                             let memData = memberships.find(item => item.id === jsonData.variants.Tier);
+                            console.log(memData);
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.Tier),
                                 tokens: memData.tokens,
