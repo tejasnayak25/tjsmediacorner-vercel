@@ -251,7 +251,7 @@ app.route('/api/gr-client')
         console.log(jsonData);
 
         if(membership) {
-            membership = membership.data();
+            membership = membership.data;
             try {
                 if(jsonData.resource_name === "sale") {
                     if(jsonData.refunded === "false") {
