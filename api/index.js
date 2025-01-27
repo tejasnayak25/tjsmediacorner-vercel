@@ -264,6 +264,7 @@ app.route('/api/gr-client')
                                 image_credits: memData.image_credits,
                                 voice_credits: memData.voice_credits
                             }).then(() => {
+                                console.log(memData);
                                 users.doc(jsonData.email).update({
                                     subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
                                 });
