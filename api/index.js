@@ -264,10 +264,8 @@ app.route('/api/gr-client')
                                 image_credits: memData.image_credits,
                                 voice_credits: memData.voice_credits
                             }).then(() => {
-                                let others = primary_member.filter(item => item !== jsonData.variants.Tier);
-                                console.log(others);
                                 users.doc(jsonData.email).update({
-                                    subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...others)
+                                    subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
                                 });
                             });
                         } else {
@@ -280,7 +278,7 @@ app.route('/api/gr-client')
                     if(jsonData.cancelled === "true") {
                         if(membership.type === "primary") {
                             users.doc(jsonData.user_email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove(...primary_member)
+                                subscriptions: admin.firestore.FieldValue.arrayRemove(...membership.tiers)
                             }).then(() => {
                                 users.doc(jsonData.email).update({
                                     subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
@@ -295,7 +293,7 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_ended") {
                     if(membership.type === "primary") {
                         users.doc(jsonData.user_email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayRemove(...primary_member)
+                            subscriptions: admin.firestore.FieldValue.arrayRemove(...membership.tiers)
                         }).then(() => {
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
@@ -317,7 +315,7 @@ app.route('/api/gr-client')
                             voice_credits: memData.voice_credits
                         }).then(() => {
                             users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free")
+                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
                             });
                         });
                     } else {
@@ -336,7 +334,7 @@ app.route('/api/gr-client')
                             voice_credits: memData.voice_credits
                         }).then(() => {
                             users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier)
+                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier, ...memData.related)
                             });
                         });
                     } else {
