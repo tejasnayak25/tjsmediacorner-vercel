@@ -231,8 +231,6 @@ app.route('/api/gr-client')
             fapp = admin.apps[0];
     }
 
-    console.log('Apps after initialization:', admin.apps);
-
     // let fapp=admin.app();
 
     firestore = fapp.firestore();
@@ -244,6 +242,7 @@ app.route('/api/gr-client')
     const jsonData = req.body;
 
     if(req.headers["user-agent"] === "Ruby") {
+        console.log(memberships);
         // Log the JSON data
         let membership = memberships.find(item => item.id === jsonData.product_name);
         let free_member = memberships.find(item => item.id === "Free");
