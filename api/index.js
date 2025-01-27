@@ -257,7 +257,7 @@ app.route('/api/gr-client')
                     if(jsonData.refunded === "false") {
                         if(membership.type === "primary") {
                             let memData = memberships.find(item => item.id === jsonData.variants.Tier);
-                            console.log(memData);
+                            memData = memData.data;
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.Tier),
                                 tokens: memData.tokens,
@@ -308,6 +308,7 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_restarted") {
                     if(membership.type === "primary") {
                         let memData = memberships.find(item => item.id === (jsonData.variants.tier ?? jsonData.variants.Tier));
+                        memData = memData.data;
                         users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.tier ?? jsonData.variants.Tier),
                             tokens: memData.tokens,
@@ -326,7 +327,7 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_updated") {
                     if(membership.type === "primary") {
                         let memData = memberships.find(item => item.id === jsonData.new_plan.tier);
-                        console.log(jsonData, memData);
+                        memData = memData.data;
                         users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier),
                             tokens: memData.tokens,
