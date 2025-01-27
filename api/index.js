@@ -207,8 +207,40 @@ memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
 });
 
 app.route('/api/gr-client')
-.post((req, res) => {
+.post(async (req, res) => {
     // Access the JSON data from the request body
+    let fapp = null;
+    if (admin.apps.length === 0) {
+        let serviceAccount = process.env.SERVICE_ACCOUNT;
+
+        if (serviceAccount) {
+            try {
+                serviceAccount = JSON.parse(serviceAccount);
+            } catch (error) {
+                console.error('Failed to parse SERVICE_ACCOUNT:', error);
+                throw new Error('Invalid SERVICE_ACCOUNT environment variable');
+            }
+        } else {
+            serviceAccount = require("./serviceAccount.json");
+        }
+
+        fapp = admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount)
+        });
+    } else {
+            fapp = admin.apps[0];
+    }
+
+    console.log('Apps after initialization:', admin.apps);
+
+    // let fapp=admin.app();
+
+    firestore = fapp.firestore();
+    membershipCollection = firestore.collection("memberships");
+
+    const data = await membershipCollection.get();
+    memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
+
     const jsonData = req.body;
 
     if(req.headers["user-agent"] === "Ruby") {
