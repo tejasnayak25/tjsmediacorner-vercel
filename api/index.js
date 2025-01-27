@@ -248,6 +248,8 @@ app.route('/api/gr-client')
         let primary_member = memberships.filter(item => item.data.type === "primary" && item.id !== "Free");
         primary_member = primary_member.map(item => item.id);
 
+        console.log(jsonData);
+
         if(membership) {
             try {
                 if(jsonData.resource_name === "sale") {
