@@ -242,7 +242,6 @@ app.route('/api/gr-client')
     const jsonData = req.body;
 
     if(req.headers["user-agent"] === "Ruby") {
-        console.log(memberships);
         // Log the JSON data
         let membership = memberships.find(item => item.id === jsonData.product_name);
         let free_member = memberships.find(item => item.id === "Free");
@@ -323,6 +322,7 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "subscription_updated") {
                     if(membership.type === "primary") {
                         let memData = memberships.find(item => item.id === jsonData.new_plan.tier);
+                        console.log(jsonData, memData);
                         users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier),
                             tokens: memData.tokens,
