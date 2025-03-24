@@ -259,6 +259,8 @@ app.route('/api/gr-client')
                                 console.log(memData.related);
                                 users.doc(jsonData.email).update({
                                     subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
+                                }).catch(e => {
+                                    console.log(e)
                                 });
                             });
                         } else {
