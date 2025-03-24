@@ -128,29 +128,25 @@ app.route("/membership/monthly-refresh")
 .get(async (req, res) => {
     let fapp = null;
     if (admin.apps.length === 0) {
-    let serviceAccount = process.env.SERVICE_ACCOUNT;
+        let serviceAccount = process.env.SERVICE_ACCOUNT;
 
-    if (serviceAccount) {
-        try {
-            serviceAccount = JSON.parse(serviceAccount);
-        } catch (error) {
-            console.error('Failed to parse SERVICE_ACCOUNT:', error);
-            throw new Error('Invalid SERVICE_ACCOUNT environment variable');
+        if (serviceAccount) {
+            try {
+                serviceAccount = JSON.parse(serviceAccount);
+            } catch (error) {
+                console.error('Failed to parse SERVICE_ACCOUNT:', error);
+                throw new Error('Invalid SERVICE_ACCOUNT environment variable');
+            }
+        } else {
+            serviceAccount = require("./serviceAccount.json");
         }
+
+        fapp = admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount)
+        });
     } else {
-        serviceAccount = require("./serviceAccount.json");
-    }
-
-    fapp = admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount)
-    });
-} else {
         fapp = admin.apps[0];
-}
-
-console.log('Apps after initialization:', admin.apps);
-
-    // let fapp=admin.app();
+    }
     
     const batch = fapp.firestore().batch();
 
@@ -158,15 +154,10 @@ console.log('Apps after initialization:', admin.apps);
     membershipCollection = firestore.collection("memberships");
 
     const data = await membershipCollection.get();
-memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
-// new_member = memberships.find(item => item.id === "New");
-
-    // console.log(memberships);
+    memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
 
     let free_member = memberships.find(item => item.id === "Free").data;
     let admin_member = memberships.find(item => item.id === "Admin").data;
-
-    console.log(admin_member);
 
     let adminQuery = users.where("subscriptions", "array-contains", "Admin").get()
     .then(docs => {
@@ -242,8 +233,6 @@ app.route('/api/gr-client')
         let primary_member = memberships.filter(item => item.data.type === "primary" && item.id !== "Free");
         primary_member = primary_member.map(item => item.id);
 
-        console.log(jsonData);
-
         if(membership) {
             membership = membership.data;
             try {
@@ -258,11 +247,9 @@ app.route('/api/gr-client')
                             });
                             await users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
-                            }).catch(e => {
-                                console.log(e)
                             });
                         } else {
-                            users.doc(jsonData.email).update({
+                            await users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
                             });
                         }
@@ -270,30 +257,28 @@ app.route('/api/gr-client')
                 } else if(jsonData.resource_name === "cancellation") {
                     if(jsonData.cancelled === "true") {
                         if(membership.type === "primary") {
-                            users.doc(jsonData.user_email).update({
+                            await users.doc(jsonData.user_email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove(...membership.tiers)
-                            }).then(() => {
-                                users.doc(jsonData.email).update({
-                                    subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
-                                });
+                            });
+                            await users.doc(jsonData.email).update({
+                                subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
                             });
                         } else {
-                            users.doc(jsonData.user_email).update({
+                            await users.doc(jsonData.user_email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name)
                             });
                         }
                     }
                 } else if(jsonData.resource_name === "subscription_ended") {
                     if(membership.type === "primary") {
-                        users.doc(jsonData.user_email).update({
+                        await users.doc(jsonData.user_email).update({
                             subscriptions: admin.firestore.FieldValue.arrayRemove(...membership.tiers)
-                        }).then(() => {
-                            users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
-                            });
+                        });
+                        await users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
                         });
                     } else {
-                        users.doc(jsonData.user_email).update({
+                        await users.doc(jsonData.user_email).update({
                             subscriptions: admin.firestore.FieldValue.arrayRemove(jsonData.product_name)
                         });
                     }
@@ -301,16 +286,15 @@ app.route('/api/gr-client')
                     if(membership.type === "primary") {
                         let memData = memberships.find(item => item.id === (jsonData.variants.tier ?? jsonData.variants.Tier));
                         memData = memData.data;
-                        users.doc(jsonData.email).update({
+                        await users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.tier ?? jsonData.variants.Tier),
                             tokens: memData.tokens,
-                        }).then(() => {
-                            users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
-                            });
+                        });
+                        await users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
                         });
                     } else {
-                        users.doc(jsonData.email).update({
+                        await users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
                         });
                     }
@@ -318,16 +302,15 @@ app.route('/api/gr-client')
                     if(membership.type === "primary") {
                         let memData = memberships.find(item => item.id === jsonData.new_plan.tier);
                         memData = memData.data;
-                        users.doc(jsonData.email).update({
+                        await users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier),
                             tokens: memData.tokens,
-                        }).then(() => {
-                            users.doc(jsonData.email).update({
-                                subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier, ...memData.related)
-                            });
+                        });
+                        await users.doc(jsonData.email).update({
+                            subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier, ...memData.related)
                         });
                     } else {
-                        users.doc(jsonData.email).update({
+                        await users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
                         });
                     }
