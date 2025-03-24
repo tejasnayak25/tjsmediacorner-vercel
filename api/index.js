@@ -252,11 +252,11 @@ app.route('/api/gr-client')
                         if(membership.type === "primary") {
                             let memData = memberships.find(item => item.id === jsonData.variants.Tier);
                             memData = memData.data;
-                            console.log(memData);
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.Tier),
                                 tokens: memData.tokens,
                             }).then(() => {
+                                console.log(memData.related);
                                 users.doc(jsonData.email).update({
                                     subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
                                 });
