@@ -260,7 +260,7 @@ app.route('/api/gr-client')
                             await users.doc(jsonData.user_email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove(...membership.tiers)
                             });
-                            await users.doc(jsonData.email).update({
+                            await users.doc(jsonData.user_email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
                             });
                         } else {
@@ -274,7 +274,7 @@ app.route('/api/gr-client')
                         await users.doc(jsonData.user_email).update({
                             subscriptions: admin.firestore.FieldValue.arrayRemove(...membership.tiers)
                         });
-                        await users.doc(jsonData.email).update({
+                        await users.doc(jsonData.user_email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion("Free")
                         });
                     } else {
