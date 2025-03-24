@@ -39,9 +39,7 @@ users.onSnapshot((snapshot) => {
             if (!document.doc.data().subscriptions) { // Check if the document is new
                 users.doc(document.doc.id).update({
                     subscriptions: ["Free"],
-                    tokens: new_member.tokens ?? 6000,
-                    image_credits: new_member.image_credits ?? 30,
-                    voice_credits: new_member.voice_credits ?? 0
+                    tokens: new_member.tokens ?? 100,
                 });
             }
         }
@@ -175,8 +173,6 @@ memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
         docs.forEach(doc => {
             batch.update(doc.ref, {
                 tokens: admin_member.tokens,
-                image_credits: admin_member.image_credits,
-                voice_credits: admin_member.voice_credits
             });
         });
     });
@@ -186,8 +182,6 @@ memberships = data.docs.map(item => ({ id: item.id, data: item.data() }));
         docs.forEach(doc => {
             batch.update(doc.ref, {
                 tokens: free_member.tokens,
-                image_credits: free_member.image_credits,
-                voice_credits: free_member.voice_credits
             });
         });
     });
@@ -262,8 +256,6 @@ app.route('/api/gr-client')
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.Tier),
                                 tokens: memData.tokens,
-                                image_credits: memData.image_credits,
-                                voice_credits: memData.voice_credits
                             }).then(() => {
                                 users.doc(jsonData.email).update({
                                     subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
@@ -312,8 +304,6 @@ app.route('/api/gr-client')
                         users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.tier ?? jsonData.variants.Tier),
                             tokens: memData.tokens,
-                            image_credits: memData.image_credits,
-                            voice_credits: memData.voice_credits
                         }).then(() => {
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
@@ -331,8 +321,6 @@ app.route('/api/gr-client')
                         users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier),
                             tokens: memData.tokens,
-                            image_credits: memData.image_credits,
-                            voice_credits: memData.voice_credits
                         }).then(() => {
                             users.doc(jsonData.email).update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier, ...memData.related)
