@@ -51,77 +51,78 @@ var engine = new Liquid({
     root: path.join(__dirname, '..', 'views')
 });
 
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "..")));
+
 // register liquid engine
 app.engine('liquid', engine.express()); 
 app.set('view engine', 'liquid');
 
-app.use((req, res, next) => {  
-    if (req.headers['sec-fetch-dest']) {
-        if(req.headers['sec-fetch-dest'] === "service-worker") {
-            return next();
-        } else {
-            if (req.path.endsWith(".css")) {
-                if (req.headers['sec-fetch-dest'] === "style") {
-                    return next();
-                } else {
-                    return res.status(404).end();
-                }
-            } else if (req.path.endsWith(".js")) {
-                if (req.headers['sec-fetch-dest'] === "script") {
-                    return next();
-                } else {
-                    return res.status(404).end();
-                }
-            } else {
-                if (req.headers.accept && req.headers.accept.includes("text/html") && req.headers['sec-fetch-dest'] === "document") {
-                    return next();
-                } else if (req.headers['sec-fetch-site'] === "same-origin") {
-                    return next();
-                } else {
-                    return res.status(404).end();
-                }
-            }
-        }
-    } else {
-        return next();
-    }
-});
+// app.use((req, res, next) => {  
+//     if (req.headers['sec-fetch-dest']) {
+//         if(req.headers['sec-fetch-dest'] === "service-worker") {
+//             return next();
+//         } else {
+//             if (req.path.endsWith(".css")) {
+//                 if (req.headers['sec-fetch-dest'] === "style") {
+//                     return next();
+//                 } else {
+//                     return res.status(404).end();
+//                 }
+//             } else if (req.path.endsWith(".js")) {
+//                 if (req.headers['sec-fetch-dest'] === "script") {
+//                     return next();
+//                 } else {
+//                     return res.status(404).end();
+//                 }
+//             } else {
+//                 if (req.headers.accept && req.headers.accept.includes("text/html") && req.headers['sec-fetch-dest'] === "document") {
+//                     return next();
+//                 } else if (req.headers['sec-fetch-site'] === "same-origin") {
+//                     return next();
+//                 } else {
+//                     return res.status(404).end();
+//                 }
+//             }
+//         }
+//     } else {
+//         return next();
+//     }
+// });
 // console.log()
 // app.use(express.json());
-
-app.use(express.static(__dirname));
 
 // Middleware to parse x-www-form-urlencoded payloads
 app.use(express.urlencoded({ extended: true }));
 
 app.route("/")
 .get((req, res) => {
-    res.render("index", { title: "TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "index.html"));
 });
 
 app.route("/login")
 .get((req, res) => {
-    res.render("login", { title: "Login | TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "login.html"));
 });
 
 app.route("/signup")
 .get((req, res) => {
-    res.render("signup", { title: "Signup | TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "signup.html"));
 });
 
 app.route("/forgot-password")
 .get((req, res) => {
-    res.render("forgot-password", { title: "Forgot Password | TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "forgot-password.html"));
 });
 
 app.route("/account")
 .get((req, res) => {
-    res.render("account", { title: "Account | TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "account.html"));
 });
 
 app.route("/about")
 .get((req, res) => {
-    res.render("about", { title: "About | TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "about.html"));
 });
 
 app.route("/membership/monthly-refresh")
@@ -363,7 +364,7 @@ app.post('/generateCustomToken', async (req, res) => {
 
 app.route("/help")
 .get((req, res) => {
-    res.render("help", { title: "Help | TJ's Media Corner" });
+    res.sendFile(path.join(__dirname, "..", "views", "help.html"));
 });
 
 app.listen(3000, () => console.log('Server ready on port 3000.'));

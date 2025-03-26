@@ -4,20 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node api/index.js",
+    "start": "nodemon api/index.js",
     "dist": "terser ./js/login-auth.js -o ./js/login-auth.min.js && terser ./js/account.js -o ./js/account.min.js",
-    "tailwindcss": "npx tailwindcss -i ./css/input.css -o ./css/output.css --watch",
+    "tailwindcss": "npx @tailwindcss/cli -i ./css/input.css -o ./css/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tejas Nayak",
   "license": "ISC",
   "dependencies": {
     "@vercel/node": "^3.2.14",
-    "auth": "file:",
-    "daisyui": "^4.12.10",
     "express": "^4.19.2",
     "firebase": "^10.12.5",
     "firebase-admin": "^12.3.1",
-    "liquidjs": "^10.16.1"
+    "flowbite": "^3.1.2",
+    "liquidjs": "^10.16.1",
+    "tailwindcss": "^4.0.15"
+  },
+  "devDependencies": {
+    "daisyui": "^5.0.9"
   }
 }

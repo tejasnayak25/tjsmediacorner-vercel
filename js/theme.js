@@ -29,6 +29,8 @@ function toggleDarkMode() {
     theme = "dark";
     scheme.setAttribute('content', theme_colors.dark);
   }
+
+  location.reload();
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').onchange = () => {

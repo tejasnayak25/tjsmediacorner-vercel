@@ -2,20 +2,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>{{ title }}</title>
+    <title>TJ's Media Corner</title>
     <link rel="stylesheet" href="../css/output.css">
     <link rel="stylesheet" href="../css/line.css">
     <link rel="stylesheet" href="../css/material-symbols.css">
     <link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg">
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="Register here.">
+    <meta property="og:title" content="TJ's Media Corner">
+    <meta property="og:description" content="Join us.">
     <meta name="theme-color" content="#e2e8f0">
 </head>
 <body class="flex flex-col h-full">
     <header id="main-header" class=" header relative z-20 text-slate-900 dark:text-slate-400 menu menu-horizontal bg-slate-200 dark:bg-slate-900 w-full p-0">
         <nav class=" lg:flex md:flex hidden w-full justify-between p-0 nav-active">
             <ul class="flex gap-1 text-base">
-                <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">{{ title }}</li>
+                <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">TJ's Media Corner</li>
             </ul>
             <ul class="flex gap-1 text-base">
                 <a href="/" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Home</a>
@@ -35,7 +35,7 @@
                 <a href="/about" class="p-2 px-3 normal-case">About</a>
                 <a href="/help" class="p-2 px-3 normal-case">Help</a>
             </ul>
-            <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">{{ title }}</li>
+            <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">TJ's Media Corner</li>
             <div class=" h-full flex gap-2">
                 <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square btn-sm normal-case flex justify-center items-center">
                     <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
@@ -50,7 +50,7 @@
             <img src="../images/poster.jpg" alt="Poster" class=" w-full h-full object-cover shadow-inner opacity-35 absolute">
             <div class=" absolute top-0 w-full h-full flex justify-center items-center">
                 <div class="p-8 border-4 rounded-xl shadow-xl border-slate-400 dark:border-slate-700 aspect-square bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400">
-                    <p class="text-center uppercase font-bold mb-3">Create Account</p>
+                    <p class="text-center uppercase font-bold mb-3">Welcome Back!</p>
                     <div class=" flex flex-col mb-2">
                         <label for="email" class="label label-text text-slate-600 dark:text-slate-400">Email</label>
                         <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
@@ -64,17 +64,18 @@
                             <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">key</i></button>
                             <input id="password" type="password" placeholder="Enter password" class=" input bg-transparent flex-shrink-0 min-w-0 flex-1 input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" required>
                         </div>
+                        <a href="/forgot-password" class=" text-sm text-right text-slate-600 dark:text-info p-1 underline">Forgot Password?</a>
                     </div>
                     <div class=" flex flex-col justify-center items-center p-3">
-                        <button id="auth-btn" class="btn btn-primary px-20 rounded-full uppercase mb-2">Signup</button>
+                        <button id="auth-btn" class="btn btn-primary px-20 rounded-full uppercase mb-2">Login</button>
 
-                        <a id="alternative-link" href="/login" class=" text-sm text-center text-slate-600 dark:text-info p-1 underline mb-2">Already have an account?</a>
+                        <a id="alternative-link" href="/signup" class=" text-sm text-center text-slate-600 dark:text-info p-1 underline mb-2">Create Account</a>
 
                         <p class=" text-sm text-center text-slate-600 dark:text-slate-400 p-1 uppercase mb-2">- Or -</p>
 
                         <div id="google-btn" class="btn btn-outline border-2 border-slate-400 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl">
                             <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="uil uil-google text-xl"></i></button>
-                            <p class=" text-center -mt-1 pr-5 text-base">Signup with Google</p>
+                            <p class=" text-center -mt-1 pr-5 text-base">Login with Google</p>
                         </div>
                     </div>
                 </div>

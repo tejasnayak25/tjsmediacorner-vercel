@@ -1,0 +1,24 @@
+.img {
+    mask-image: url(/images/home-mask.webp);
+    mask-size: cover;
+}
+
+.btn-ghost:active, .btn-ghost:focus {
+    background-color: transparent;
+}
+
+.prod-cover {
+    animation: pop 0.5s;
+}
+
+@keyframes pop {
+    from {
+        bottom: -4rem;
+        opacity: 0;
+    }
+
+    to {
+        bottom: -2rem;
+        opacity: 0.85;
+    }
+}
