@@ -345,8 +345,12 @@ app.route('/api/gr-client')
                             }
                         }
 
+                        // If carry-over is enabled, add existing tokens
                         if (memData.carry_over) {
-                            memData.tokens += existingTokens; // Add to existing tokens
+                            memData.tokens += Math.max(existingTokens, 0);
+                        } else {
+                            // Prevent token farming by resetting to max of new plan
+                            memData.tokens = Math.max(memData.tokens, 0);
                         }
 
                         await users.doc(jsonData.email).update({
