@@ -239,18 +239,31 @@ app.route('/api/gr-client')
             try {
                 if(jsonData.resource_name === "sale") {
                     if(jsonData.refunded === "false") {
+                        const userRef = users.doc(jsonData.email);
+                        const userDoc = await userRef.get();
+
+                        if(!userDoc.exists) return;
+
                         if(membership.type === "primary") {
                             let memData = memberships.find(item => item.id === jsonData.variants.Tier);
                             memData = memData.data;
-                            await users.doc(jsonData.email).update({
+
+                            let existingTokens = userDoc.data().tokens || 0; // Default to 0 if not set
+
+                            if (memData.carry_over) {
+                                memData.tokens += existingTokens; // Add to existing tokens
+                            }
+
+                            await userRef.update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.Tier),
                                 tokens: memData.tokens,
                             });
-                            await users.doc(jsonData.email).update({
+                            
+                            await userRef.update({
                                 subscriptions: admin.firestore.FieldValue.arrayRemove("Free", ...memData.related)
                             });
                         } else {
-                            await users.doc(jsonData.email).update({
+                            await userRef.update({
                                 subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.product_name)
                             });
                         }
@@ -284,9 +297,21 @@ app.route('/api/gr-client')
                         });
                     }
                 } else if(jsonData.resource_name === "subscription_restarted") {
+                    const userRef = users.doc(jsonData.email);
+                    const userDoc = await userRef.get();
+
+                    if(!userDoc.exists) return;
+
                     if(membership.type === "primary") {
                         let memData = memberships.find(item => item.id === (jsonData.variants.tier ?? jsonData.variants.Tier));
                         memData = memData.data;
+
+                        let existingTokens = userDoc.data().tokens || 0; // Default to 0 if not set
+
+                        if (memData.carry_over) {
+                            memData.tokens += existingTokens; // Add to existing tokens
+                        }
+
                         await users.doc(jsonData.email).update({
                             subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.variants.tier ?? jsonData.variants.Tier),
                             tokens: memData.tokens,
@@ -300,15 +325,36 @@ app.route('/api/gr-client')
                         });
                     }
                 } else if(jsonData.resource_name === "subscription_updated") {
+                    const userRef = users.doc(jsonData.email);
+                    const userDoc = await userRef.get();
+
+                    if(!userDoc.exists) return;
+
                     if(membership.type === "primary") {
-                        let memData = memberships.find(item => item.id === jsonData.new_plan.tier);
+                        let memData = memberships.find(item => item.id === jsonData.new_plan.tier.name);
                         memData = memData.data;
+
+                        let existingTokens = userDoc.data().tokens || 0; // Default to 0 if not set
+                        let previousTier = jsonData.old_plan.tier.name;
+
+                        // Deduct previous plan's tokens if user was on a different plan
+                        if (previousTier && previousTier !== jsonData.new_plan.tier.name) {
+                            let prevMemData = memberships.find(item => item.id === previousTier);
+                            if (prevMemData) {
+                                existingTokens -= prevMemData.data.tokens; // Remove old plan's tokens
+                            }
+                        }
+
+                        if (memData.carry_over) {
+                            memData.tokens += existingTokens; // Add to existing tokens
+                        }
+
                         await users.doc(jsonData.email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier),
+                            subscriptions: admin.firestore.FieldValue.arrayUnion(jsonData.new_plan.tier.name),
                             tokens: memData.tokens,
                         });
                         await users.doc(jsonData.email).update({
-                            subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier, ...memData.related)
+                            subscriptions: admin.firestore.FieldValue.arrayRemove("Free", jsonData.old_plan.tier.name, ...memData.related)
                         });
                     } else {
                         await users.doc(jsonData.email).update({

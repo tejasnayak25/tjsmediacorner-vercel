@@ -140,13 +140,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     easing: "easeOutQuad"
                 });
 
-                anime({
-                    targets: document.querySelector(".f-holder"),
-                    opacity: 1,
-                    bottom: "0rem",
-                    duration: 300, // Shorter animation for smooth effect
-                    easing: "easeOutQuad"
-                });
+                setTimeout(() => {
+                    anime({
+                        targets: document.querySelector(".f-holder"),
+                        opacity: 1,
+                        bottom: "0rem",
+                        duration: 300, // Shorter animation for smooth effect
+                        easing: "easeOutQuad"
+                    });
+                }, 300);
 
                 document.getElementById("scroll-next").classList.add("hidden");
             }
