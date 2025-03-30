@@ -114,6 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!visibleImage.length) return;
     
         let progress = Object.values(args.currentElements)[0]?.progress ?? 0; // Fix for getting progress correctly
+        let scrollDiff = Math.abs(progress - lastProgress);
+        console.log(scrollDiff);
     
         // Track scroll direction
         let currentScrollY = window.scrollY;
