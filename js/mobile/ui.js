@@ -42,12 +42,29 @@ function onload() {
             toggleDarkMode();
         }
 
-        document.getElementById("toggle-mobile-menu").onclick = () => {
+        let mobileMenuBtn = document.getElementById("toggle-mobile-menu");
+        mobileMenuBtn.onclick = () => {
             let mobileMenu = document.getElementById('mobile-menu');
             if(mobileMenu.classList.contains("flex")) {
                 mobileMenu.classList.replace("flex", "hidden");
+                anime({
+                    targets: mobileMenu,
+                    opacity: 0,
+                    right: -56,
+                    easing: "easeOutQuad",
+                    duration: 100,
+                });
+                mobileMenuBtn.querySelector("i").classList.replace("fi-sr-cross", "fi-sr-menu-burger");
             } else {
                 mobileMenu.classList.replace("hidden", "flex");
+                anime({
+                    targets: mobileMenu,
+                    opacity: 1,
+                    right: 0,
+                    easing: "easeOutQuad",
+                    duration: 100,
+                });
+                mobileMenuBtn.querySelector("i").classList.replace("fi-sr-menu-burger", "fi-sr-cross");
             }
         }
     }

@@ -59,31 +59,31 @@
                         <a href="/about" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200">About<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
                         <a href="/help" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200">Help<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
                         <li id="share-btn" class="btn btn-ghost hover:bg-transparent border-0 shadow-none transition-all btn-square rounded-none h-full normal-case flex justify-center items-center hover:text-slate-500 dark:hover:text-slate-200">
-                            <i class=" aspect-square p-0 transition-all uil uil-share text-lg"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-share-square"></i>
                         </li>
                         <li id="change-mode-btn" class="btn btn-ghost hover:bg-transparent border-0 shadow-none transition-all btn-square rounded-none h-full normal-case flex justify-center items-center hover:text-slate-500 dark:hover:text-slate-200">
-                            <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
-                            <i class=" aspect-square p-0 transition-all uil uil-moon dark:block hidden text-lg"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-brightness block dark:hidden"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-moon-stars dark:block hidden"></i>
                         </li>
                     </ul>
                 </nav>
                 <nav class=" lg:hidden md:hidden flex w-full justify-between p-1">
-                    <ul id="mobile-menu" class="hidden flex-col gap-1 text-sm absolute right-0 min-w-40 dark:border-slate-700 border-b border-r text-slate-900 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 p-2" style="top: 56px;">
-                        <a href="/account" class="p-2 px-3 normal-case">Account</a>
-                        <a href="https://tjsmediacorner.gumroad.com/" class="p-2 px-3 normal-case">Store</a>
-                        <a href="/about" class="p-2 px-3 normal-case">About</a>
-                        <a href="/help" class="p-2 px-3 normal-case">Help</a>
+                    <ul id="mobile-menu" class="hidden flex-col gap-1 text-base absolute min-w-40 shadow-lg text-slate-900 dark:text-slate-400 bg-slate-400 dark:bg-black p-2 rounded-bl-xl" style="top: 56px;right: -56px;opacity: 0;">
+                        <a href="/account" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-user"></i>Account</a>
+                        <a href="https://tjsmediacorner.gumroad.com/" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-store-alt"></i>Store</a>
+                        <a href="/about" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-info"></i>About</a>
+                        <a href="/help" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-comment"></i>Help</a>
                     </ul>
-                    <li class="btn btn-link rounded-none text-current no-underline hover:no-underline h-full normal-case font-bold">TJ's Media Corner</li>
+                    <li class="btn btn-link rounded-none text-current no-underline hover:no-underline h-full normal-case font-bold text-lg">TJ's Media Corner</li>
                     <div class=" h-full flex gap-2">
                         <li id="share-btn" class="btn btn-ghost transition-all btn-square normal-case flex justify-center items-center">
-                            <i class=" aspect-square p-0 transition-all uil uil-share text-lg"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-share-square text-lg"></i>
                         </li>
                         <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square normal-case flex justify-center items-center">
-                            <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
-                            <i class=" aspect-square p-0 transition-all uil uil-moon dark:block hidden text-lg"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-brightness block dark:hidden text-lg"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-moon-stars dark:block hidden text-lg"></i>
                         </li>
-                        <button id="toggle-mobile-menu" class=" btn btn-ghost btn-square rounded-md"><i class=" material-symbols-rounded">menu</i></button>
+                        <button id="toggle-mobile-menu" class=" btn btn-ghost btn-square rounded-md"><i class=" fi fi-sr-menu-burger text-lg"></i></button>
                     </div>
                 </nav>
             </header>
@@ -97,7 +97,7 @@
                         <a href="/apps/tsdf"><img src="/images/tsdf-dark.png" class="prod-cover hover:shadow-xl cursor-pointer md:-skew-x-12 md:skew-y-6 skew-x-12 -skew-y-6 w-96 absolute hidden dark:block -bottom-8 -right-8 hover:scale-110 transition-all ease-linear opacity-85 rounded-md"></a>
                     </div>
                     <div class=" t-holder absolute flex flex-col gap-8 p-5 size-full justify-center items-center pointer-events-none">
-                        <p class=" md:text-8xl text-4xl font-bold modak-regular title text-center drop-shadow-md pointer-events-auto select-none whitespace-nowrap">TJ's Media Corner</p>
+                        <p class=" lg:text-8xl md:text-6xl text-4xl font-bold modak-regular title text-center drop-shadow-md pointer-events-auto select-none whitespace-nowrap">TJ's Media Corner</p>
                         <p class=" md:text-4xl text-3xl pacifico-regular">We build dreams!</p>
                         <div class=" flex md:flex-row flex-col gap-3 w-full p-5 justify-center items-center">
                             <!-- <input type="email" id="email" class="input md:w-1/3 w-full rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200" placeholder="Enter your email" required /> -->
@@ -124,9 +124,13 @@
                                         <a href="/apps/cmov" class="flex gap-3 uppercase items-center px-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Read more
                                         </a>
+
+                                        <a href="#" class="inline-flex items-center px-3 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <i class="fi fi-sr-download text-lg"></i>
+                                        </a>
                                 
                                         <a href="#" class="inline-flex items-center px-3 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            <i class="fi fi-sr-share text-lg"></i>
+                                            <i class="fi fi-sr-share-square text-lg"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -244,13 +248,29 @@
                         </div>
                         <span class=" md:hidden block btn btn-link pointer-events-auto righteous-regular">View All ></span>
                     </div>
+
+                    <div class=" c-holder absolute flex flex-col gap-3 p-3 size-full justify-center items-center pointer-events-none opacity-0 -bottom-[100%] dark:text-black text-slate-400 rounded-4xl ">
+                        <p class=" md:text-2xl text-xl font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center md:justify-center justify-center">Contact Us</p>
+                        <div class=" flex md:flex-row flex-col gap-3 w-full p-1 md:px-5 px-1 md:overflow-y-hidden overflow-y-auto md:max-h-none max-h-96 pointer-events-auto">
+                            <div class=" md:w-1/2 w-full h-full md:p-10 p-3 py-10 border-slate-400 dark:border-slate-700"> 
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+                                <textarea id="message" rows="4" class="block mb-5 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-slate-500 focus:ring-2 transition-all focus:border-slate-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500" placeholder="Write your thoughts here..."></textarea>
+                                <button class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto px-10">Send</button>
+                            </div>
+                            <div class=" md:w-1/2 w-full h-full md:p-10 p-5 flex md:flex-col flex-row gap-3 items-center justify-center">
+                                <button class="btn btn-outline md:btn-wide btn-circle flex items-center gap-4 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-slate-100"><i class=" uil uil-github text-xl"></i><span class="md:block hidden">Github</span></button>
+                                <button class="btn btn-outline md:btn-wide btn-circle flex items-center gap-4 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-slate-100"><i class=" uil uil-youtube text-xl"></i><span class="md:block hidden">Youtube</span></button>
+                            </div>
+                            <!-- <button class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-400 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto">Get Started!</button> -->
+                        </div>
+                    </div>
                 </div>
             </main>
             <p class=" w-full text-center p-5 pt-0 text-sm text-gray-600 dark:text-gray-400">2024 - Copyright, TJ's Media Corner</p>
         </div>
         <div class="pointer-events-none w-full absolute bottom-3 flex justify-center p-5">
             <button id="scroll-next" type="button" class="absolute bottom-16 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none pointer-events-auto">
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-400/50 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-900 dark:border-slate-100 bg-white/30 dark:bg-gray-400/50 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                     <div class="group">
                         <svg class="w-4 h-4 rotate-90" 
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">

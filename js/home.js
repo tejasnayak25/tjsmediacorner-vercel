@@ -32,7 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     });
 
-    document.querySelector(".title").onmouseout = () => {
+    let letters = document.querySelectorAll(".title .letter");
+
+    document.body.onclick = (e) => {
+        if(e.target.classList.contains("t-holder") || e.target.classList.contains("letter")) return;
         letters.forEach((letter, i) => {
             anime({
                 targets: letter,
@@ -98,6 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
             timer = setTimeout(() => func(...args), delay);
         };
     };
+
+    let currentSection = 1;
     
     // Scroll event handler
     scroll.on('scroll', debounce((args) => {
@@ -108,102 +113,165 @@ document.addEventListener("DOMContentLoaded", () => {
     
         if (!visibleImage.length) return;
     
-        let progress = args.currentElements[0]?.progress ?? 0;
+        let progress = Object.values(args.currentElements)[0]?.progress ?? 0; // Fix for getting progress correctly
     
         // Track scroll direction
         let currentScrollY = window.scrollY;
-        let scrollingDown = currentScrollY < lastScrollY;
+        let scrollingDown = currentScrollY > lastScrollY;
         lastScrollY = currentScrollY;
     
-        if (Math.abs(progress - lastProgress) < 0.05) return; 
+        if (Math.abs(progress - lastProgress) < 0.05) return;
         lastProgress = progress;
+    
         console.log("Progress:", progress, "| Scrolling Down:", scrollingDown);
     
         isAnimating = true;
     
-        if (scrollingDown) {
-            // Scrolling down animations
-            anime({
-                targets: ".f-holder",
-                opacity: 0,
-                bottom: "-20rem",
-                duration: 400,
-                easing: "easeOutQuad",
-                complete: () => {
-                    anime({
-                        targets: ".t-holder",
-                        opacity: 1,
-                        top: 0,
-                        duration: 400,
-                        easing: "easeOutQuad",
-                        complete: () => isAnimating = false
-                    });
+        if (currentSection === 1) {
+            if (scrollingDown) {
+                anime({
+                    targets: visibleImage[0],
+                    left: "-30rem",
+                    opacity: 0,
+                    duration: 400,
+                    easing: "easeOutQuad",
+                });
     
-                    anime({
-                        targets: visibleImage[0],
-                        skewX: 12,
-                        skewY: -6,
-                        left: "-2rem",
-                        scale: 1,
-                        opacity: 1,
-                        duration: 400,
-                        easing: "easeOutQuad",
-                    });
-    
+                if (visibleImage.length > 1) {
                     anime({
                         targets: visibleImage[1],
-                        skewX: -12,
-                        skewY: 6,
-                        right: "-2rem",
-                        scale: 1,
-                        opacity: 1,
+                        right: "-30rem",
+                        opacity: 0,
                         duration: 400,
                         easing: "easeOutQuad",
                     });
                 }
-            });
     
-            document.getElementById("scroll-next").classList.remove("hidden");
+                anime({
+                    targets: ".t-holder",
+                    opacity: 0,
+                    top: "-10rem",
+                    duration: 400,
+                    easing: "easeOutQuad",
+                    complete: () => {
+                        anime({
+                            targets: ".f-holder",
+                            opacity: 1,
+                            bottom: "0rem",
+                            duration: 400,
+                            easing: "easeOutQuad",
+                            complete: () => {
+                                isAnimating = false;
+                                currentSection++; // Update section AFTER animation
+                            }
+                        });
+                    }
+                });
     
-        } else {
-            // Scrolling up animations
-            anime({
-                targets: visibleImage[0],
-                left: "-10rem",
-                opacity: 0,
-                duration: 400, 
-                easing: "easeOutQuad",
-            });
+                document.getElementById("scroll-next").classList.add("hidden");
+            } else {
+                isAnimating = false;
+            }
+        } else if (currentSection === 2) {
+            if (!scrollingDown) {
+                anime({
+                    targets: ".f-holder",
+                    opacity: 0,
+                    bottom: "-20rem",
+                    duration: 400,
+                    easing: "easeOutQuad",
+                    complete: () => {
+                        anime({
+                            targets: ".t-holder",
+                            opacity: 1,
+                            top: 0,
+                            duration: 400,
+                            easing: "easeOutQuad",
+                            complete: () => {
+                                isAnimating = false;
+                                currentSection--; // Update section AFTER animation
+                            }
+                        });
     
-            anime({
-                targets: visibleImage[1],
-                right: "-10rem",
-                opacity: 0,
-                duration: 400, 
-                easing: "easeOutQuad",
-            });
+                        anime({
+                            targets: visibleImage[0],
+                            skewX: 12,
+                            skewY: -6,
+                            left: "-2rem",
+                            scale: 1,
+                            opacity: 1,
+                            duration: 400,
+                            easing: "easeOutQuad",
+                        });
     
-            anime({
-                targets: ".t-holder",
-                opacity: 0,
-                top: "-10rem",
-                duration: 400,
-                easing: "easeOutQuad",
-                complete: () => {
-                    anime({
-                        targets: ".f-holder",
-                        opacity: 1,
-                        bottom: "0rem",
-                        duration: 400,
-                        easing: "easeOutQuad",
-                        complete: () => isAnimating = false
-                    });
-                }
-            });
+                        if (visibleImage.length > 1) {
+                            anime({
+                                targets: visibleImage[1],
+                                skewX: -12,
+                                skewY: 6,
+                                right: "-2rem",
+                                scale: 1,
+                                opacity: 1,
+                                duration: 400,
+                                easing: "easeOutQuad",
+                            });
+                        }
+                    }
+                });
     
-            document.getElementById("scroll-next").classList.add("hidden");
+                document.getElementById("scroll-next").classList.remove("hidden");
+            } else {
+                anime({
+                    targets: ".f-holder",
+                    opacity: 0,
+                    bottom: "20rem",
+                    duration: 400,
+                    easing: "easeOutQuad",
+                    complete: () => {
+                        anime({
+                            targets: ".c-holder",
+                            opacity: 1,
+                            bottom: "0rem",
+                            duration: 400,
+                            easing: "easeOutQuad",
+                            complete: () => {
+                                isAnimating = false;
+                                currentSection++;
+                            }
+                        });
+                    }
+                });
+            }
+        } else if(currentSection === 3) {
+            if(!scrollingDown) {
+                anime({
+                    targets: ".c-holder",
+                    opacity: 0,
+                    bottom: "-20rem",
+                    duration: 400,
+                    easing: "easeOutQuad",
+                    complete: () => {
+                        anime({
+                            targets: ".f-holder",
+                            opacity: 1,
+                            bottom: "0rem",
+                            duration: 400,
+                            easing: "easeOutQuad",
+                            complete: () => {
+                                isAnimating = false;
+                                currentSection--;
+                            }
+                        });
+                    }
+                });
+            } else {
+                isAnimating = false;
+            }
         }
+    
+        console.log("Current Section:", currentSection);
     }, 100)); // Debounce delay to prevent rapid firing
+    
     
     
 });
