@@ -22,3 +22,13 @@
         opacity: 0.85;
     }
 }
+
+.app-logo {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.app-logo-container:hover .app-logo {
+    transform: scale(1.2);
+}
