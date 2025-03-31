@@ -1,4 +1,4 @@
-<html lang="en" class=" bg-slate-400 dark:bg-black">
+<html lang="en" class=" bg-blue-300 dark:bg-black">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -46,7 +46,7 @@
     </style>
 </head>
 <body class="flex flex-col h-[200%] overflow-y-auto">
-    <section data-scroll data-scroll-call="scrollev" class=" size-full fixed overflow-hidden from-slate-200 dark:from-slate-900 to-slate-400 dark:to-black bg-radial">
+    <section data-scroll data-scroll-call="scrollev" class=" size-full fixed overflow-hidden from-purple-300 dark:from-slate-900 to-blue-300 dark:to-black bg-gradient-to-br">
         <div class="size-full flex flex-col">
             <header id="main-header" class=" header z-20 text-slate-900 dark:text-slate-400 menu menu-horizontal w-full md:pt-4 md:px-12 pt-4 px-4">
                 <nav class=" lg:flex md:flex hidden w-full justify-between p-0 nav-active">
@@ -68,7 +68,7 @@
                     </ul>
                 </nav>
                 <nav class=" lg:hidden md:hidden flex w-full justify-between p-1">
-                    <ul id="mobile-menu" class="hidden flex-col gap-1 text-base absolute min-w-40 shadow-lg text-slate-900 dark:text-slate-400 bg-slate-400 dark:bg-black p-2 rounded-bl-xl" style="top: 56px;right: -56px;opacity: 0;">
+                    <ul id="mobile-menu" class="hidden flex-col gap-1 text-base absolute min-w-40 shadow-lg text-slate-900 dark:text-slate-400 from-purple-300 dark:from-slate-900 to-blue-300 dark:to-black bg-gradient-to-br p-2 rounded-l-xl" style="top: 56px;right: -56px;opacity: 0;">
                         <a href="/account" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-user"></i>Account</a>
                         <a href="https://tjsmediacorner.gumroad.com/" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-store-alt"></i>Store</a>
                         <a href="/about" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-info"></i>About</a>
@@ -76,19 +76,19 @@
                     </ul>
                     <li class="btn btn-link rounded-none text-current no-underline hover:no-underline h-full normal-case font-bold text-lg">TJ's Media Corner</li>
                     <div class=" h-full flex gap-2">
-                        <li id="share-btn" class="btn btn-ghost transition-all btn-square normal-case flex justify-center items-center">
+                        <li id="share-btn" class="btn btn-ghost border-0 shadow-none transition-all btn-square normal-case flex justify-center items-center">
                             <i class=" aspect-square p-0 transition-all fi fi-sr-share-square text-lg"></i>
                         </li>
-                        <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square normal-case flex justify-center items-center">
+                        <li id="change-mode-btn" class="btn btn-ghost border-0 shadow-none transition-all btn-square normal-case flex justify-center items-center">
                             <i class=" aspect-square p-0 transition-all fi fi-sr-brightness block dark:hidden text-lg"></i>
                             <i class=" aspect-square p-0 transition-all fi fi-sr-moon-stars dark:block hidden text-lg"></i>
                         </li>
-                        <button id="toggle-mobile-menu" class=" btn btn-ghost btn-square rounded-md"><i class=" fi fi-sr-menu-burger text-lg"></i></button>
+                        <button id="toggle-mobile-menu" class=" btn btn-ghost border-0 shadow-none btn-square rounded-md"><i class=" fi fi-sr-menu-burger text-lg"></i></button>
                     </div>
                 </nav>
             </header>
             <main class=" flex-1 relative overflow-hidden text-slate-900 dark:text-slate-400 flex justify-center items-center p-6 md:px-14 px-6 pt-2">
-                <div class="flex justify-center items-center rounded-4xl bg-white/30 dark:bg-slate-800/30 size-full relative">
+                <div class="flex justify-center items-center rounded-4xl bg-white/30 dark:bg-slate-800/30 border-2  size-full relative">
                     <div class="absolute size-full rounded-4xl bg-slate-100 dark:bg-black invert img opacity-5"></div>
                     <div class=" absolute size-full rounded-4xl overflow-hidden flex items-end">
                         <a href="/apps/snote"><img src="/images/snote-light.png" class="prod-cover hover:shadow-xl cursor-pointer skew-x-12 -skew-y-6 w-96 -left-8 absolute md:block hidden dark:hidden -bottom-8 hover:scale-110 transition-all ease-linear opacity-85 rounded-md"></a>
@@ -101,149 +101,76 @@
                         <p class=" md:text-4xl text-3xl pacifico-regular">We build dreams!</p>
                         <div class=" flex md:flex-row flex-col gap-3 w-full p-5 justify-center items-center">
                             <!-- <input type="email" id="email" class="input md:w-1/3 w-full rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200" placeholder="Enter your email" required /> -->
-                            <button class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto px-10">Get Started!</button>
+                            <a href="/account" class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto px-10">Get Started!</a>
                         </div>
                     </div>
 
                     <div class=" f-holder absolute flex flex-col gap-3 p-3 size-full justify-center items-center pointer-events-none opacity-0 -bottom-[100%] dark:text-black text-slate-400 rounded-4xl ">
-                        <p class=" md:text-2xl text-xl font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center md:justify-center justify-center">Featured Apps<span class=" md:flex hidden btn text-base text-slate-900 dark:text-slate-400 absolute right-2 btn-sm p-0 items-center btn-link pointer-events-auto righteous-regular">View All ></span></p>
-                        <div class=" flex md:flex-row flex-col gap-3 w-full p-1 md:overflow-x-auto overflow-x-hidden md:overflow-y-hidden overflow-y-auto md:max-h-none max-h-96 pointer-events-auto">
-                            <div class="md:max-w-72 max-w-none shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
+                        <p class=" md:text-2xl text-xl font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center md:justify-center justify-center">Featured Apps<a href="/apps" class=" md:flex hidden btn text-base text-slate-900 dark:text-slate-400 absolute right-2 btn-sm p-0 items-center btn-link pointer-events-auto righteous-regular">View All ></a></p>
+                        <div class=" flex md:flex-row flex-col gap-3 w-full p-1 md:overflow-x-auto overflow-x-hidden md:overflow-y-hidden overflow-y-auto md:max-h-none max-h-96 pointer-events-auto md:justify-center justify-start">
+                            <div class="md:w-72 w-full shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                                <a href="/apps/cmov">
                                     <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
-                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container">
-                                        <p class=" text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">CMOV</p>
+                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container relative">
+                                        <img src="/images/cmov-light.png" class=" rounded-t-lg size-full absolute opacity-10 block dark:hidden">
+                                        <img src="/images/cmov-dark.png" class=" rounded-t-lg size-full absolute opacity-20 hidden dark:block">
+                                        <p class="relative text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">CMOV</p>
                                     </div>
                                 </a>
                                 <div class="p-5">
-                                    <a href="#">
+                                    <a href="/apps/cmov">
                                         <h5 class="mb-2 md:text-xl text-lg font-bold tracking-tight text-gray-900 dark:text-white">Chatmovie</h5>
                                     </a>
-                                    <p class="mb-6 font-normal md:text-base text-sm text-gray-700 dark:text-gray-400">Create chat-stories with chatmovie today</p>
+                                    <p class="mb-6 font-normal md:text-base text-sm text-gray-700 dark:text-gray-400">Create chat-stories today!</p>
                                     <div class=" flex gap-3 w-full justify-center">
                                         <a href="/apps/cmov" class="flex gap-3 uppercase items-center px-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Read more
                                         </a>
-
-                                        <a href="#" class="inline-flex items-center px-3 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            <i class="fi fi-sr-download text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-72 w-full shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                                <a href="/apps/snote">
+                                    <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
+                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container relative">
+                                        <img src="/images/snote-light.png" class=" rounded-t-lg size-full absolute opacity-10 block dark:hidden">
+                                        <img src="/images/snote-dark.png" class=" rounded-t-lg size-full absolute opacity-20 hidden dark:block">
+                                        <p class="relative text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">SNOTE</p>
+                                    </div>
+                                </a>
+                                <div class="p-5">
+                                    <a href="/apps/snote">
+                                        <h5 class="mb-2 md:text-xl text-lg font-bold tracking-tight text-gray-900 dark:text-white">StoryNote</h5>
+                                    </a>
+                                    <p class="mb-6 font-normal md:text-base text-sm text-gray-700 dark:text-gray-400">Where writing knows no end!</p>
+                                    <div class=" flex gap-3 w-full justify-center">
+                                        <a href="/apps/snote" class="flex gap-3 uppercase items-center px-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
                                         </a>
-                                
-                                        <a href="#" class="inline-flex items-center px-3 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            <i class="fi fi-sr-share-square text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-72 w-full shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                                <a href="/apps/tsdf">
+                                    <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
+                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container relative">
+                                        <img src="/images/tsdf-light.png" class=" rounded-t-lg size-full absolute opacity-10 block dark:hidden">
+                                        <img src="/images/tsdf-dark.png" class=" rounded-t-lg size-full absolute opacity-20 hidden dark:block">
+                                        <p class=" relative text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">TOON</p>
+                                    </div>
+                                </a>
+                                <div class="p-5">
+                                    <a href="/apps/tsdf">
+                                        <h5 class="mb-2 md:text-xl text-lg font-bold tracking-tight text-gray-900 dark:text-white">Toonspace</h5>
+                                    </a>
+                                    <p class="mb-6 font-normal md:text-base text-sm text-gray-700 dark:text-gray-400">Where stories come to life!</p>
+                                    <div class=" flex gap-3 w-full justify-center">
+                                        <a href="/apps/tsdf" class="flex gap-3 uppercase items-center px-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="md:max-w-72 max-w-none shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
-                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container">
-                                        <p class=" text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">SNOTE</p>
-                                    </div>
-                                </a>
-                                <div class="p-5">
-                                    <a href="#">
-                                        <h5 class="mb-2 md:text-xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Storynote</h5>
-                                    </a>
-                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                    <a href="/apps/snote" class="inline-flex items-center px-3 pr-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Read more
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                            
-                                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Share
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="md:max-w-72 max-w-none shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
-                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container">
-                                        <p class=" text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">TOON</p>
-                                    </div>
-                                </a>
-                                <div class="p-5">
-                                    <a href="#">
-                                        <h5 class="mb-2 md:text-xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Toonspace</h5>
-                                    </a>
-                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                    <a href="#" class="inline-flex items-center px-3 pr-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Read more
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                            
-                                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Share
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="md:max-w-72 max-w-none shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
-                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container">
-                                        <p class=" text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">CMOV</p>
-                                    </div>
-                                </a>
-                                <div class="p-5">
-                                    <a href="#">
-                                        <h5 class="mb-2 md:text-xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Chatmovie</h5>
-                                    </a>
-                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                    <a href="#" class="inline-flex items-center px-3 pr-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Read more
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                            
-                                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Share
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="md:max-w-72 max-w-none shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <!-- <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" /> -->
-                                    <div class=" w-full rounded-t-lg aspect-video bg-slate-200 dark:bg-slate-950 flex justify-center items-center app-logo-container">
-                                        <p class=" text-center uppercase md:text-4xl text-2xl text-slate-400 dark:text-slate-400 from-slate-600 to-blue-500 dark:from-slate-200 bg-gradient-to-r modak-regular app-logo transition-all">CMOV</p>
-                                    </div>
-                                </a>
-                                <div class="p-5">
-                                    <a href="#">
-                                        <h5 class="mb-2 md:text-xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Chatmovie</h5>
-                                    </a>
-                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                    <a href="#" class="inline-flex items-center px-3 pr-5 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Read more
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                            
-                                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Share
-                                         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-
                             <!-- <button class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-400 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto">Get Started!</button> -->
                         </div>
                         <span class=" md:hidden block btn btn-link pointer-events-auto righteous-regular">View All ></span>
@@ -255,11 +182,13 @@
                             <div class=" md:w-1/2 w-full h-full md:p-10 p-3 py-10 border-slate-400 dark:border-slate-700"> 
                                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
                                 <textarea id="message" rows="4" class="block mb-5 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-slate-500 focus:ring-2 transition-all focus:border-slate-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-slate-500 dark:focus:border-slate-500" placeholder="Write your thoughts here..."></textarea>
-                                <button class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto px-10">Send</button>
+                                <button id="send-mail" class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full rounded-full pointer-events-auto px-10">Send</button>
                             </div>
-                            <div class=" md:w-1/2 w-full h-full md:p-10 p-5 flex md:flex-col flex-row gap-3 items-center justify-center">
-                                <button class="btn btn-outline md:btn-wide btn-circle flex items-center gap-4 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-slate-100"><i class=" uil uil-github text-xl"></i><span class="md:block hidden">Github</span></button>
-                                <button class="btn btn-outline md:btn-wide btn-circle flex items-center gap-4 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-slate-100"><i class=" uil uil-youtube text-xl"></i><span class="md:block hidden">Youtube</span></button>
+                            <div class=" md:w-1/2 w-full h-full md:p-10 p-5 flex md:flex-col flex-row gap-3 items-center justify-center rounded-2xl relative">
+                                <!-- <div class="absolute left-0 top-0 size-full pattern-rhombus pattern-slate-500 rounded-2xl pattern-bg-slate-100 pattern-size-6 pattern-opacity-10"></div> -->
+                                <a target="_blank" href="https://www.instagram.com/tjnayak" class="relative btn btn-primary bg-pink-500 hover:bg-pink-400 text-slate-100 md:btn-wide btn-circle flex items-center gap-4 border-0 shadow-none"><i class=" uil uil-instagram text-xl"></i><span class="md:block hidden">Instagram</span></a>
+                                <a target="_blank" href="https://github.com/tejasnayak25" class="relative btn btn-primary bg-black hover:bg-slate-900 text-slate-100 md:btn-wide btn-circle flex items-center gap-4 border border-slate-700 shadow-none"><i class=" uil uil-github text-xl"></i><span class="md:block hidden">Github</span></a>
+                                <a target="_blank" href="https://youtube.com/playlist?list=PL0mw__rXkkIqcoixWraT5kB4qg3w6QA2B&si=_vqrFMaI13gS19Zl" class="relative btn btn-primary bg-red-500 hover:bg-red-400 text-slate-100 md:btn-wide btn-circle flex items-center gap-4 border-0 shadow-none"><i class=" uil uil-youtube text-xl"></i><span class="md:block hidden">Youtube</span></a>
                             </div>
                             <!-- <button class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-400 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full btn-lg rounded-full pointer-events-auto">Get Started!</button> -->
                         </div>
@@ -285,11 +214,11 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-    <script src="../js/anime.min.js"></script>
-    <script src="../js/locomotive-scroll.min.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/mobile/ui.js"></script>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="/js/anime.min.js"></script>
+    <script src="/js/locomotive-scroll.min.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/mobile/ui.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/home.js"></script>
 </body>
 </html>

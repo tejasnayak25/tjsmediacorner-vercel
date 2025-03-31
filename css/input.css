@@ -2,5 +2,6 @@
 @plugin "daisyui";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
+@plugin "tailwindcss-bg-patterns";
 
 @custom-variant dark (&:where(.dark, .dark *));

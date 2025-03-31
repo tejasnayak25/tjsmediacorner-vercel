@@ -46,27 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     };
-    
-
-    document.querySelectorAll(".nav-active #menu a").forEach(target => {
-        target.onmouseover = () => {
-            anime({
-                targets: target.querySelector("span"),
-                width: "100%",
-                easing: 'easeInOutQuad',
-                duration: 300
-            });
-        }
-
-        target.onmouseout = () => {
-            anime({
-                targets: target.querySelector("span"),
-                width: "0%",
-                easing: 'easeInOutQuad',
-                duration: 300
-            });
-        }
-    });
 
     const scroll = new LocomotiveScroll({
         el: document.body,
@@ -83,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Recalculate body height
         let bodyHeight = document.body.getBoundingClientRect().height;
     
-        lastProgress = Math.min(lastProgress + 0.5, 1); 
+        lastProgress = Math.min(lastProgress + 0.15, 1); 
     
         scroll.scrollTo(lastProgress * bodyHeight, { 
             duration: 800, 
@@ -103,19 +82,21 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     let currentSection = 1;
+    let stepSize = window.innerHeight / 3;
+
+    let autoscroll = false;
     
+    const images = document.querySelectorAll(".prod-cover");
+    const visibleImage = Array.from(images).filter(img => img.offsetParent !== null && getComputedStyle(img).display !== "none");
+
     // Scroll event handler
     scroll.on('scroll', debounce((args) => {
         if (isAnimating) return;
-    
-        const images = document.querySelectorAll(".prod-cover");
-        const visibleImage = Array.from(images).filter(img => img.offsetParent !== null && getComputedStyle(img).display !== "none");
     
         if (!visibleImage.length) return;
     
         let progress = Object.values(args.currentElements)[0]?.progress ?? 0; // Fix for getting progress correctly
         let scrollDiff = Math.abs(progress - lastProgress);
-        console.log(scrollDiff);
     
         // Track scroll direction
         let currentScrollY = window.scrollY;
@@ -127,8 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
     
         console.log("Progress:", progress, "| Scrolling Down:", scrollingDown);
     
-        isAnimating = true;
+        animate(scrollingDown);
+        if(scrollDiff > 0.4) setTimeout(() => {
+            animate(scrollingDown);
+        }, 1000);
     
+        console.log("Current Section:", currentSection);
+    }, 100)); // Debounce delay to prevent rapid firing
+    
+    function animate(scrollingDown) {
+        isAnimating = true;
+        
         if (currentSection === 1) {
             if (scrollingDown) {
                 anime({
@@ -169,8 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                     }
                 });
-    
-                document.getElementById("scroll-next").classList.add("hidden");
             } else {
                 isAnimating = false;
             }
@@ -220,8 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                 });
-    
-                document.getElementById("scroll-next").classList.remove("hidden");
             } else {
                 anime({
                     targets: ".f-holder",
@@ -243,6 +229,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                     }
                 });
+    
+                document.getElementById("scroll-next").classList.add("hidden");
             }
         } else if(currentSection === 3) {
             if(!scrollingDown) {
@@ -266,20 +254,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                     }
                 });
+    
+                document.getElementById("scroll-next").classList.remove("hidden");
             } else {
                 isAnimating = false;
             }
         }
-    
-        console.log("Current Section:", currentSection);
-    }, 100)); // Debounce delay to prevent rapid firing
-    
-    
+    } 
     
 });
 
-document.querySelector(".nav-active #share-btn").onclick = () => {
-    navigator.share({
-        url: window.location.origin
-    });
+document.getElementById("send-mail").onclick = () => {
+    window.open(`mailto:arpithanayak900@gmail.com?subject=${encodeURIComponent("Support Request")}&body=${encodeURIComponent(document.getElementById("message").value)}`, "_blank");
 }
