@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Progress:", progress, "| Scrolling Down:", scrollingDown);
     
         animate(scrollingDown);
-        if(scrollDiff > 0.4) setTimeout(() => {
+        if(scrollDiff > 0.7) setTimeout(() => {
             animate(scrollingDown);
         }, 1000);
     
