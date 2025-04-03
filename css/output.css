@@ -271,47 +271,6 @@
       }
     }
   }
-  .drawer-side {
-    pointer-events: none;
-    visibility: hidden;
-    position: fixed;
-    inset-inline-start: calc(0.25rem * 0);
-    top: calc(0.25rem * 0);
-    grid-column-start: 1;
-    grid-row-start: 1;
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    grid-template-rows: repeat(1, minmax(0, 1fr));
-    align-items: flex-start;
-    justify-items: start;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    overscroll-behavior: contain;
-    opacity: 0%;
-    transition: opacity 0.2s ease-out 0.1s allow-discrete, visibility 0.3s ease-out 0.1s allow-discrete;
-    height: 100vh;
-    height: 100dvh;
-    > .drawer-overlay {
-      position: sticky;
-      top: calc(0.25rem * 0);
-      cursor: pointer;
-      place-self: stretch;
-      background-color: oklch(0% 0 0 / 40%);
-    }
-    > * {
-      grid-column-start: 1;
-      grid-row-start: 1;
-    }
-    > *:not(.drawer-overlay) {
-      will-change: transform;
-      transition: translate 0.3s ease-out;
-      translate: -100%;
-      [dir="rtl"] & {
-        translate: 100%;
-      }
-    }
-  }
   .drawer-open {
     > .drawer-side {
       overflow-y: auto;
@@ -341,28 +300,6 @@
         pointer-events: auto;
         visibility: visible;
       }
-    }
-  }
-  .drawer-toggle {
-    position: fixed;
-    height: calc(0.25rem * 0);
-    width: calc(0.25rem * 0);
-    appearance: none;
-    opacity: 0%;
-    &:checked {
-      & ~ .drawer-side {
-        pointer-events: auto;
-        visibility: visible;
-        overflow-y: auto;
-        opacity: 100%;
-        & > *:not(.drawer-overlay) {
-          translate: 0%;
-        }
-      }
-    }
-    &:focus-visible ~ .drawer-content label.drawer-button {
-      outline: 2px solid;
-      outline-offset: 2px;
     }
   }
   .tooltip {
@@ -979,19 +916,6 @@
     &:is(details) summary {
       outline: none;
     }
-  }
-  .collapse-content {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    visibility: hidden;
-    grid-column-start: 1;
-    grid-row-start: 2;
-    min-height: 0;
-    transition: visibility 0.2s;
-    transition: padding 0.2s ease-out, background-color 0.2s ease-out;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    cursor: unset;
   }
   .collapse-open {
     grid-template-rows: max-content 1fr;
@@ -2769,11 +2693,6 @@
     overflow-y: auto;
     overscroll-behavior: contain;
   }
-  .drawer-content {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    min-width: calc(0.25rem * 0);
-  }
   .timeline-middle {
     grid-column-start: 2;
     grid-row-start: 2;
@@ -4508,6 +4427,9 @@
   .flex-1 {
     flex: 1;
   }
+  .flex-auto {
+    flex: auto;
+  }
   .flex-shrink {
     flex-shrink: 1;
   }
@@ -5097,41 +5019,14 @@
   .bg-slate-200 {
     background-color: var(--color-slate-200);
   }
-  .bg-slate-200\/40 {
-    background-color: color-mix(in oklab, var(--color-slate-200) 40%, transparent);
-  }
   .bg-slate-300 {
     background-color: var(--color-slate-300);
-  }
-  .bg-slate-300\/40 {
-    background-color: color-mix(in oklab, var(--color-slate-300) 40%, transparent);
-  }
-  .bg-slate-300\/60 {
-    background-color: color-mix(in oklab, var(--color-slate-300) 60%, transparent);
-  }
-  .bg-slate-400 {
-    background-color: var(--color-slate-400);
-  }
-  .bg-slate-400\/40 {
-    background-color: color-mix(in oklab, var(--color-slate-400) 40%, transparent);
   }
   .bg-slate-500 {
     background-color: var(--color-slate-500);
   }
-  .bg-slate-500\/40 {
-    background-color: color-mix(in oklab, var(--color-slate-500) 40%, transparent);
-  }
-  .bg-slate-700 {
-    background-color: var(--color-slate-700);
-  }
-  .bg-slate-700\/40 {
-    background-color: color-mix(in oklab, var(--color-slate-700) 40%, transparent);
-  }
   .bg-slate-900 {
     background-color: var(--color-slate-900);
-  }
-  .bg-slate-900\/40 {
-    background-color: color-mix(in oklab, var(--color-slate-900) 40%, transparent);
   }
   .bg-slate-900\/85 {
     background-color: color-mix(in oklab, var(--color-slate-900) 85%, transparent);
@@ -5340,17 +5235,8 @@
   .py-7 {
     padding-block: calc(var(--spacing) * 7);
   }
-  .py-8 {
-    padding-block: calc(var(--spacing) * 8);
-  }
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
-  }
-  .py-11 {
-    padding-block: calc(var(--spacing) * 11);
-  }
-  .py-12 {
-    padding-block: calc(var(--spacing) * 12);
   }
   .py-14 {
     padding-block: calc(var(--spacing) * 14);
@@ -5375,12 +5261,6 @@
   }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
-  }
-  .pt-5 {
-    padding-top: calc(var(--spacing) * 5);
-  }
-  .pt-7 {
-    padding-top: calc(var(--spacing) * 7);
   }
   .pt-\[0\.061rem\] {
     padding-top: 0.061rem;
@@ -6216,6 +6096,11 @@
   .md\:min-w-sm {
     @media (width >= 48rem) {
       min-width: var(--container-sm);
+    }
+  }
+  .md\:flex-1 {
+    @media (width >= 48rem) {
+      flex: 1;
     }
   }
   .md\:-skew-x-12 {
