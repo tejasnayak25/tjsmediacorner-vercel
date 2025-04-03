@@ -1,141 +1,195 @@
-<html lang="en">
+<html lang="en" class=" bg-blue-300 dark:bg-black">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TJ's Media Corner</title>
-    <link rel="stylesheet" href="../css/output.css">
-    <link rel="stylesheet" href="../css/line.css">
-    <link rel="stylesheet" href="../css/material-symbols.css">
-    <link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg">
+    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="/css/line.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/material-symbols.css">
+    <link rel="stylesheet" href="/css/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="/css/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="shortcut icon" href="/images/logo.jpg" type="image/jpg">
     <meta property="og:title" content="TJ's Media Corner">
-    <meta property="og:description" content="My Account">
+    <meta property="og:description" content="Where creative tools exist!">
     <meta name="theme-color" content="#e2e8f0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rochester&family=Righteous&family=Modak&display=swap" rel="stylesheet">
+    <style>
+        .modak-regular {
+            font-family: "Modak", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .righteous-regular {
+            font-family: "Righteous", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .pacifico-regular {
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .pacifico-light {
+            font-family: "Pacifico", cursive;
+            font-weight: 200;
+            font-style: normal;
+        }
+        .rochester-regular {
+            font-family: "Rochester", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+    </style>
 </head>
-<body class="flex flex-col h-full">
-    <header id="main-header" class=" header relative z-20 text-slate-900 dark:text-slate-400 menu menu-horizontal bg-slate-200 dark:bg-slate-900 w-full p-0">
-        <nav class=" lg:flex md:flex hidden w-full justify-between p-0 nav-active">
-            <ul class="flex gap-1 text-base">
-                <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">TJ's Media Corner</li>
-            </ul>
-            <ul class="flex gap-1 text-base">
-                <a href="/" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Home</a>
-                <a href="https://tjsmediacorner.gumroad.com/" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Store</a>
-                <li id="logout-btn-2" class="btn btn-ghost rounded-none btn-sm h-full normal-case">LogOut</li>
-                <a href="/about" class="btn btn-ghost rounded-none btn-sm h-full normal-case">About</a>
-                <a href="/help" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Help</a>
-                <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square rounded-none btn-sm h-full normal-case flex justify-center items-center">
-                    <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
-                    <i class=" aspect-square p-0 transition-all uil uil-moon dark:block hidden text-lg"></i>
-                </li>
-            </ul>
-        </nav>
-        <nav class=" lg:hidden md:hidden flex w-full justify-between p-1">
-            <ul id="mobile-menu" class="hidden flex-col gap-1 text-sm absolute right-0 min-w-40 dark:border-slate-700 border-b border-r text-slate-900 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 p-2" style="top: 56px;">
-                <a href="/" class="p-2 px-3 normal-case">Home</a>
-                <a href="https://tjsmediacorner.gumroad.com/" class="p-2 px-3 normal-case">Store</a>
-                <li id="logout-btn-2" class="p-2 px-3 normal-case">LogOut</li>
-                <a href="/about" class="p-2 px-3 normal-case">About</a>
-                <a href="/help" class="p-2 px-3 normal-case">Help</a>
-            </ul>
-            <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">TJ's Media Corner</li>
-            <div class=" h-full flex gap-2">
-                <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square btn-sm normal-case flex justify-center items-center">
-                    <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
-                    <i class=" aspect-square p-0 transition-all uil uil-moon dark:block hidden text-lg"></i>
-                </li>
-                <button id="toggle-mobile-menu" class=" btn btn-sm btn-ghost btn-square rounded-md"><i class=" material-symbols-rounded">menu</i></button>
-            </div>
-        </nav>
-    </header>
-    <main class=" flex-1 relative flex justify-center items-center bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400">
-        <img src="../images/poster.jpg" alt="Gradient" class="w-full h-full absolute top-0 z-[11] opacity-35">
-        <div class=" lg:w-3/5 md:w-3/5 w-full h-full z-[12] bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400 md:p-10 p-5 overflow-y-auto max-h-full">
-            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">My Account</p>
-            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
-                <div class=" flex flex-col mb-2">
-                    <label for="profile-picture" class="label label-text text-slate-600 dark:text-slate-400">Profile Picture</label>
-                    <div class=" flex justify-start items-center gap-5 mt-2">
-                        <div class="md:w-32 w-20 md:ml-0 ml-5 aspect-square relative rounded-full">
-                            <img id="pfp-image" src="../images/user.svg" class=" w-full aspect-square absolute object-cover rounded-full" alt="Profile Picture">
-                            <div id="pfp-loading" class=" w-full aspect-square hidden justify-center absolute items-center bg-slate-900 bg-opacity-70 rounded-full">
-                                <span class=" relative w-8 aspect-square animate-spin flex justify-center items-center text-primary"><i class="uil uil-spinner-alt text-2xl pt-[0.061rem]"></i></span>
+<body class="flex flex-col h-full overflow-y-auto from-purple-500 to-transparent bg-gradient-to-r">
+    <section data-scroll data-scroll-call="scrollev" class=" size-full fixed overflow-hidden from-purple-300 dark:from-slate-900 to-blue-300 dark:to-black bg-gradient-to-br">
+        <div class="size-full flex flex-col">
+            <header id="main-header" class=" header z-20 text-slate-900 dark:text-slate-400 menu menu-horizontal w-full md:pt-4 md:px-12 pt-4 px-4">
+                <nav class=" lg:flex md:flex hidden w-full justify-between p-0 nav-active">
+                    <ul class="flex gap-1 text-base">
+                        <li class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none no-underline hover:no-underline h-full font-bold uppercase">TJ's Media Corner</li>
+                    </ul>
+                    <ul id="menu" class="flex gap-1 text-base h-10">
+                        <a href="/" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200">Home<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
+                        <a href="https://tjsmediacorner.gumroad.com/" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200">Store<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
+                        <a href="/about" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200">About<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
+                        <a href="/help" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200">Help<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
+                        <li id="share-btn" class="btn btn-ghost hover:bg-transparent border-0 shadow-none transition-all btn-square rounded-none h-full normal-case flex justify-center items-center hover:text-slate-500 dark:hover:text-slate-200">
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-share-square"></i>
+                        </li>
+                        <li id="change-mode-btn" class="btn btn-ghost hover:bg-transparent border-0 shadow-none transition-all btn-square rounded-none h-full normal-case flex justify-center items-center hover:text-slate-500 dark:hover:text-slate-200">
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-brightness block dark:hidden"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-moon-stars dark:block hidden"></i>
+                        </li>
+
+                        <a id="logout-btn-2" class="btn btn-ghost hover:bg-transparent border-0 shadow-none rounded-none h-full normal-case relative hover:text-slate-500 dark:hover:text-slate-200"> <i class="fi fi-sr-sign-out-alt"></i> Logout<span class="block absolute h-0.5 w-full bottom-0 left-0 bg-slate-500 dark:bg-slate-200" style="width: 0;"></span></a>
+                    </ul>
+                </nav>
+                <nav class=" lg:hidden md:hidden flex w-full justify-between p-1">
+                    <ul id="mobile-menu" class="hidden flex-col gap-1 text-base absolute min-w-40 shadow-lg text-slate-900 dark:text-slate-400 from-purple-300 dark:from-slate-900 to-blue-300 dark:to-black bg-gradient-to-br p-2 rounded-l-xl" style="top: 56px;right: -56px;opacity: 0;">
+                        <a href="/" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-home"></i>Home</a>
+                        <a href="https://tjsmediacorner.gumroad.com/" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-store-alt"></i>Store</a>
+                        <a href="/about" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-info"></i>About</a>
+                        <a href="/help" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-comment"></i>Help</a>
+                        <a id="logout-btn-2" class="p-2 px-3 normal-case flex gap-3 items-center"><i class="fi fi-sr-sign-out-alt"></i>Logout</a>
+                    </ul>
+                    <li class="btn btn-link rounded-none text-current no-underline hover:no-underline h-full normal-case font-bold text-lg">TJ's Media Corner</li>
+                    <div class=" h-full flex gap-2">
+                        <li id="share-btn" class="btn btn-ghost border-0 shadow-none transition-all btn-square normal-case flex justify-center items-center">
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-share-square text-lg"></i>
+                        </li>
+                        <li id="change-mode-btn" class="btn btn-ghost border-0 shadow-none transition-all btn-square normal-case flex justify-center items-center">
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-brightness block dark:hidden text-lg"></i>
+                            <i class=" aspect-square p-0 transition-all fi fi-sr-moon-stars dark:block hidden text-lg"></i>
+                        </li>
+                        <button id="toggle-mobile-menu" class=" btn btn-ghost border-0 shadow-none btn-square rounded-md"><i class=" fi fi-sr-menu-burger text-lg"></i></button>
+                    </div>
+                </nav>
+            </header>
+            <main class=" flex-1 relative overflow-hidden text-slate-900 dark:text-slate-400 flex justify-center items-center p-6 md:px-14 px-6 pt-2">
+                <div class="flex justify-center items-center rounded-4xl bg-white/30 dark:bg-slate-800/30 border-2  size-full relative">
+                    <div class="absolute size-full rounded-4xl bg-slate-100 dark:bg-black invert img opacity-5"></div>
+
+                    <div class=" c-holder absolute flex flex-col gap-3 md:px-3 px-8 py-10 size-full items-center pointer-events-auto dark:text-black text-slate-400 rounded-4xl overflow-y-auto">
+                        <p class=" md:text-2xl text-xl font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center md:justify-center justify-center">Account</p>
+                        
+
+                        <div class=" flex-1 flex md:flex-row flex-col gap-8">
+                            <div class="w-full max-w-sm border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20">
+                                <div class="flex justify-end px-4 pt-4">
+                                    <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+                                        <span class="sr-only">Open dropdown</span>
+                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                                        </svg>
+                                    </button>
+                                    <!-- Dropdown menu -->
+                                    <div id="dropdown" class="z-10 hidden text-base list-none divide-y divide-gray-100 rounded-lg shadow-sm w-44 from-purple-200 dark:from-slate-900 to-blue-200 dark:to-black bg-gradient-to-br border-2 border-slate-700 dark:border-slate-400">
+                                        <ul class="py-2" aria-labelledby="dropdownButton">
+                                        <li>
+                                            <a id="logout-btn" class=" cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white flex items-center gap-3"><i class="fi fi-sr-sign-out-alt"></i> Logout</a>
+                                        </li>
+                                        <li>
+                                            <a id="password-reset-btn" class=" cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white flex items-center gap-3"><i class="fi fi-sr-key"></i> Reset Password</a>
+                                        </li>
+                                        <li>
+                                            <a id="delete-btn" class=" cursor-pointer px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-red-400 dark:hover:text-red-500 flex items-center gap-3"><i class="fi fi-sr-trash"></i> Delete</a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center pb-10">
+                                    <div class="size-24 rounded-full mb-2 overflow-hidden relative">
+                                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover absolute" id="pfp-image" src="../images/user.svg" alt="Profile Image"/>
+                                        <div id="pfp-upload" class="size-24 bg-black/60 text-white hidden justify-center items-center absolute">
+                                            <i id="pfp-upload-icon" class=" fi fi-sr-upload text-xl cursor-pointer"></i>
+                                            <input type="file" accept="image/*" name="profile-picture" id="profile-picture" class="hidden">
+                                            <span id="pfp-loading" class="loading-spinner bg-white size-6 hidden"></span>
+                                        </div>
+                                    </div>
+                                    <input id="display-name" class="mb-1 text-xl shrink-0 text-center font-medium text-gray-900 dark:text-white read-only:outline-0 read-only:ring-0 input bg-transparent border-0 shadow-none active:border-0 focus:border-0 border-slate-900 dark:border-slate-400 outline-slate-900 dark:outline-slate-100" value="John Doe" readonly>
+                                    <span id="email" class="text-sm text-gray-500 dark:text-gray-400">johndoe@xyz.com</span>
+                                    <div class="flex mt-4 md:mt-6">
+                                        <button id="update-btn" class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none md:w-auto w-full rounded-full pointer-events-auto px-10">Edit Profile</button>
+                                        <!-- <a href="#" class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Message</a> -->
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="w-full max-w-sm md:min-w-sm min-w-full border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-7 justify-center">
+                                <p class=" text-lg font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center justify-center p-3 gap-2">Credits <i class="fi fi-sr-info" data-tooltip-target="tooltip-default"></i></p>
+                                <div class="flex justify-center items-center gap-6 text-slate-900 dark:text-slate-400 relative w-full mb-3">
+                                    <!-- <p class=" flex items-center gap-2">Credits <i class="fi fi-sr-info" data-tooltip-target="tooltip-default"></i></p> -->
+
+                                    <div class=" p-2 px-3 rounded-md bg-slate-100/60 dark:bg-slate-700/40 flex justify-center items-center gap-2">
+                                        <i class="fi fi-sr-flame text-orange-300"></i>
+                                        <span id="tokens">0</span>
+                                    </div>
+                                </div>
+                                <p class=" text-lg font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center justify-center p-3">Subscriptions</p>
+                                <div id="subscriptions-holder" class="hidden flex-nowrap px-5 py-2 mb-2 gap-3 overflow-x-auto relative subscription-container">
+                                </div>
+                                <p id="no-subscriptions" class=" text-sm text-slate-700 dark:text-slate-400 relative w-full text-center mb-3">Nothing Here!</p>
+                                <div class=" p-3 flex justify-center relative">
+                                    <a href="https://tjsmediacorner.gumroad.com/" class="btn btn-primary bg-black dark:bg-slate-400 dark:text-black text-slate-300 border-0 hover:bg-slate-400 dark:hover:bg-slate-600 hover:text-black dark:hover:text-slate-100 hover:border-2 transition-all border-slate-500 dark:border-slate-300 shadow-none rounded-full pointer-events-auto px-10">Visit Store</a>
+                                </div>
                             </div>
                         </div>
-                        <input type="file" name="profile-picture" id="profile-picture" class="hidden">
-                        <button id="pfp-btn" class="btn btn-secondary md:px-16 px-8 rounded-xl uppercase mb-2">Change Picture</button>
                     </div>
                 </div>
-                <div class=" flex flex-col mb-2">
-                    <label for="display-name" class="label label-text text-slate-600 dark:text-slate-400">Display Name</label>
-                    <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
-                        <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">id_card</i></button>
-                        <input id="display-name" type="text" placeholder="Enter name" class=" input flex-1 flex-shrink-0 min-w-0 bg-transparent input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" value="User123" required>
-                    </div>
-                </div>
-                <div class=" flex flex-col mb-2">
-                    <label for="email" class="label label-text text-slate-600 dark:text-slate-400">Email</label>
-                    <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
-                        <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">mail</i></button>
-                        <input id="email" type="email" placeholder="Enter email" class=" input flex-1 flex-shrink-0 min-w-0 bg-transparent input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" value="user@email.com" required readonly>
-                    </div>
-                </div>
-                <div class=" flex flex-col justify-center items-center p-3">
-                    <button id="update-btn" class="btn btn-primary px-20 rounded-full uppercase mb-2">Update</button>
-                </div>
-            </div>
-            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700 flex justify-between items-center"><span>Credits</span> <a href="https://tjsmediacorner.gumroad.com/" class="underline text-base text-slate-600 dark:text-info">More Credits</a></p>
-            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
-                <div class=" flex flex-col">
-                    <!-- <label for="tokens" class="label label-text text-slate-600 dark:text-slate-400">Tokens</label> -->
-                    <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
-                        <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">paid</i></button>
-                        <input id="tokens" type="number" placeholder="Tokens" class=" input flex-1 flex-shrink-0 min-w-0 bg-transparent input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" value="0" required readonly>
-                    </div>
-                </div>
-            </div>
-            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700 flex justify-between items-center"><span>Subscriptions</span> <a href="https://tjsmediacorner.gumroad.com/" class="underline text-base text-slate-600 dark:text-info">Visit Store</a></p>
-            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
-                <p id="no-subscriptions" class=" text-sm text-slate-600 dark:text-slate-400">Nothing Here!</p>
-                <div id="subscriptions-holder" class="subscriptions hidden flex-wrap justify-between gap-3"></div>
-            </div>
-            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">Reset Password</p>
-            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
-                <div class=" flex flex-col justify-center items-center p-3">
-                    <button id="password-reset-btn" class="btn btn-info px-20 rounded-full uppercase">Send Email</button>
-                </div>
-            </div>
-            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">Logout</p>
-            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
-                <div class=" flex flex-col justify-center items-center p-3">
-                    <button id="logout-btn" class="btn btn-accent px-20 rounded-full uppercase">Logout</button>
-                </div>
-            </div>
-            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">Delete Account</p>
-            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
-                <p class=" text-center">Note that this action is irreversible!</p>
-                <div class=" flex flex-col justify-center items-center p-3">
-                    <button id="delete-btn" class="btn btn-error px-20 rounded-full uppercase">Delete</button>
-                </div>
-            </div>
+            </main>
+            <p class=" w-full text-center p-5 pt-0 text-sm text-gray-600 dark:text-gray-400">2024 - Copyright, TJ's Media Corner</p>
         </div>
-    </main>
+    </section>
 
-    <section id="alert-window" class="bg-slate-900 z-[13] bg-opacity-85 hidden justify-center items-center fixed top-0 w-full h-full p-5">
-        <div class=" border-4 rounded-xl shadow-xl border-slate-400 dark:border-slate-700 bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400 lg:min-w-[21rem] md:min-w-[21rem] min-w-full">
-            <div class=" flex justify-between border-b-2 border-slate-400 dark:border-slate-700">
+    <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700 max-w-40 text-center">
+        Credits are used for accessing features in apps
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <section id="alert-window" class="bg-slate-900/85 hidden justify-center items-center fixed top-0 w-full h-full p-5">
+        <div class=" border-2 rounded-2xl shadow-xl overflow-hidden bg-slate-200 dark:bg-gray-950 text-slate-900 dark:text-slate-400 md:min-w-[21rem] min-w-full">
+            <div class=" flex justify-between from-purple-300 dark:from-slate-900 to-blue-300 dark:to-black bg-gradient-to-br border-b">
                 <p class=" px-5 flex-1 flex items-center">TJ's Media Corner</p>
-                <button id="closebtn" class="btn btn-square btn-ghost hover:bg-transparent p-0"><i class=" uil uil-multiply text-xl"></i></button>
+                <button id="closebtn" class="btn btn-square btn-ghost hover:bg-transparent border-0 shadow-none p-0"><i class=" uil uil-multiply text-xl"></i></button>
             </div>
             <p id="alert-message" class=" px-5 py-4">Message</p>
             <div id="alert-btns" class="px-5 py-4 pt-0 flex"></div>
         </div>
     </section>
-    
-    <script src="../js/theme.js"></script>
-    <script src="../js/mobile/ui.js"></script>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/alertwindow.js"></script>
 
-    <script type="module" src="../js/account.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="/js/anime.min.js"></script>
+    <script src="/js/locomotive-scroll.min.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/mobile/ui.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/alertwindow.js"></script>
+    <!-- <script src="../js/home.js"></script> -->
+     <script type="module" src="/js/account.min.js"></script>
 </body>
 </html>

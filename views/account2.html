@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TJ's Media Corner</title>
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="../css/line.css">
+    <link rel="stylesheet" href="../css/material-symbols.css">
+    <link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg">
+    <meta property="og:title" content="TJ's Media Corner">
+    <meta property="og:description" content="My Account">
+    <meta name="theme-color" content="#e2e8f0">
+</head>
+<body class="flex flex-col h-full">
+    <header id="main-header" class=" header relative z-20 text-slate-900 dark:text-slate-400 menu menu-horizontal bg-slate-200 dark:bg-slate-900 w-full p-0">
+        <nav class=" lg:flex md:flex hidden w-full justify-between p-0 nav-active">
+            <ul class="flex gap-1 text-base">
+                <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">TJ's Media Corner</li>
+            </ul>
+            <ul class="flex gap-1 text-base">
+                <a href="/" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Home</a>
+                <a href="https://tjsmediacorner.gumroad.com/" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Store</a>
+                <li id="logout-btn-2" class="btn btn-ghost rounded-none btn-sm h-full normal-case">LogOut</li>
+                <a href="/about" class="btn btn-ghost rounded-none btn-sm h-full normal-case">About</a>
+                <a href="/help" class="btn btn-ghost rounded-none btn-sm h-full normal-case">Help</a>
+                <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square rounded-none btn-sm h-full normal-case flex justify-center items-center">
+                    <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
+                    <i class=" aspect-square p-0 transition-all uil uil-moon dark:block hidden text-lg"></i>
+                </li>
+            </ul>
+        </nav>
+        <nav class=" lg:hidden md:hidden flex w-full justify-between p-1">
+            <ul id="mobile-menu" class="hidden flex-col gap-1 text-sm absolute right-0 min-w-40 dark:border-slate-700 border-b border-r text-slate-900 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 p-2" style="top: 56px;">
+                <a href="/" class="p-2 px-3 normal-case">Home</a>
+                <a href="https://tjsmediacorner.gumroad.com/" class="p-2 px-3 normal-case">Store</a>
+                <li id="logout-btn-2" class="p-2 px-3 normal-case">LogOut</li>
+                <a href="/about" class="p-2 px-3 normal-case">About</a>
+                <a href="/help" class="p-2 px-3 normal-case">Help</a>
+            </ul>
+            <li class="btn btn-link rounded-none text-current no-underline hover:no-underline btn-sm h-full normal-case font-bold">TJ's Media Corner</li>
+            <div class=" h-full flex gap-2">
+                <li id="change-mode-btn" class="btn btn-ghost transition-all btn-square btn-sm normal-case flex justify-center items-center">
+                    <i class=" aspect-square p-0 transition-all uil uil-sun block dark:hidden text-lg"></i>
+                    <i class=" aspect-square p-0 transition-all uil uil-moon dark:block hidden text-lg"></i>
+                </li>
+                <button id="toggle-mobile-menu" class=" btn btn-sm btn-ghost btn-square rounded-md"><i class=" material-symbols-rounded">menu</i></button>
+            </div>
+        </nav>
+    </header>
+    <main class=" flex-1 relative flex justify-center items-center bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400">
+        <img src="../images/poster.jpg" alt="Gradient" class="w-full h-full absolute top-0 z-[11] opacity-35">
+        <div class=" lg:w-3/5 md:w-3/5 w-full h-full z-[12] bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400 md:p-10 p-5 overflow-y-auto max-h-full">
+            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">My Account</p>
+            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
+                <div class=" flex flex-col mb-2">
+                    <label for="profile-picture" class="label label-text text-slate-600 dark:text-slate-400">Profile Picture</label>
+                    <div class=" flex justify-start items-center gap-5 mt-2">
+                        <div class="md:w-32 w-20 md:ml-0 ml-5 aspect-square relative rounded-full">
+                            <img id="pfp-image" src="../images/user.svg" class=" w-full aspect-square absolute object-cover rounded-full" alt="Profile Picture">
+                            <div id="pfp-loading" class=" w-full aspect-square hidden justify-center absolute items-center bg-slate-900 bg-opacity-70 rounded-full">
+                                <span class=" relative w-8 aspect-square animate-spin flex justify-center items-center text-primary"><i class="uil uil-spinner-alt text-2xl pt-[0.061rem]"></i></span>
+                            </div>
+                        </div>
+                        <input type="file" name="profile-picture" id="profile-picture" class="hidden">
+                        <button id="pfp-btn" class="btn btn-secondary md:px-16 px-8 rounded-xl uppercase mb-2">Change Picture</button>
+                    </div>
+                </div>
+                <div class=" flex flex-col mb-2">
+                    <label for="display-name" class="label label-text text-slate-600 dark:text-slate-400">Display Name</label>
+                    <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
+                        <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">id_card</i></button>
+                        <input id="display-name" type="text" placeholder="Enter name" class=" input flex-1 flex-shrink-0 min-w-0 bg-transparent input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" value="User123" required>
+                    </div>
+                </div>
+                <div class=" flex flex-col mb-2">
+                    <label for="email" class="label label-text text-slate-600 dark:text-slate-400">Email</label>
+                    <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
+                        <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">mail</i></button>
+                        <input id="email" type="email" placeholder="Enter email" class=" input flex-1 flex-shrink-0 min-w-0 bg-transparent input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" value="user@email.com" required readonly>
+                    </div>
+                </div>
+                <div class=" flex flex-col justify-center items-center p-3">
+                    <button id="update-btn" class="btn btn-primary px-20 rounded-full uppercase mb-2">Update</button>
+                </div>
+            </div>
+            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700 flex justify-between items-center"><span>Credits</span> <a href="https://tjsmediacorner.gumroad.com/" class="underline text-base text-slate-600 dark:text-info">More Credits</a></p>
+            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
+                <div class=" flex flex-col">
+                    <!-- <label for="tokens" class="label label-text text-slate-600 dark:text-slate-400">Tokens</label> -->
+                    <div class=" flex border-2 border-slate-400 dark:border-slate-700 rounded-xl">
+                        <button class="peer btn btn-ghost btn-square hover:bg-transparent"><i class="material-symbols-rounded">paid</i></button>
+                        <input id="tokens" type="number" placeholder="Tokens" class=" input flex-1 flex-shrink-0 min-w-0 bg-transparent input-bordered border-0 focus:outline-0 invalid:text-error rounded-none p-2" value="0" required readonly>
+                    </div>
+                </div>
+            </div>
+            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700 flex justify-between items-center"><span>Subscriptions</span> <a href="https://tjsmediacorner.gumroad.com/" class="underline text-base text-slate-600 dark:text-info">Visit Store</a></p>
+            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
+                <p id="no-subscriptions" class=" text-sm text-slate-600 dark:text-slate-400">Nothing Here!</p>
+                <div id="subscriptions-holder" class="subscriptions hidden flex-wrap justify-between gap-3"></div>
+            </div>
+            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">Reset Password</p>
+            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
+                <div class=" flex flex-col justify-center items-center p-3">
+                    <button id="password-reset-btn" class="btn btn-info px-20 rounded-full uppercase">Send Email</button>
+                </div>
+            </div>
+            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">Logout</p>
+            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
+                <div class=" flex flex-col justify-center items-center p-3">
+                    <button id="logout-btn" class="btn btn-accent px-20 rounded-full uppercase">Logout</button>
+                </div>
+            </div>
+            <p class="p-2 text-lg border-b-2 border-slate-400 dark:border-slate-700">Delete Account</p>
+            <div class="w-full border-b-2 border-slate-400 dark:border-slate-700 bg-slate-300 dark:bg-slate-800 p-3">
+                <p class=" text-center">Note that this action is irreversible!</p>
+                <div class=" flex flex-col justify-center items-center p-3">
+                    <button id="delete-btn" class="btn btn-error px-20 rounded-full uppercase">Delete</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="alert-window" class="bg-slate-900 z-[13] bg-opacity-85 hidden justify-center items-center fixed top-0 w-full h-full p-5">
+        <div class=" border-4 rounded-xl shadow-xl border-slate-400 dark:border-slate-700 bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-400 lg:min-w-[21rem] md:min-w-[21rem] min-w-full">
+            <div class=" flex justify-between border-b-2 border-slate-400 dark:border-slate-700">
+                <p class=" px-5 flex-1 flex items-center">TJ's Media Corner</p>
+                <button id="closebtn" class="btn btn-square btn-ghost hover:bg-transparent p-0"><i class=" uil uil-multiply text-xl"></i></button>
+            </div>
+            <p id="alert-message" class=" px-5 py-4">Message</p>
+            <div id="alert-btns" class="px-5 py-4 pt-0 flex"></div>
+        </div>
+    </section>
+    
+    <script src="../js/theme.js"></script>
+    <script src="../js/mobile/ui.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/alertwindow.js"></script>
+
+    <script type="module" src="../js/account.min.js"></script>
+</body>
+</html>

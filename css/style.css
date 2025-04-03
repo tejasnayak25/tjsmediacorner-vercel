@@ -32,3 +32,11 @@
 .app-logo-container:hover .app-logo {
     transform: scale(1.2);
 }
+
+.subscription-container:has(:nth-child(n+3)) {
+    justify-content: flex-start;
+}
+
+.subscription-container:not(:has(:nth-child(n+3))) {
+    justify-content: center;
+}

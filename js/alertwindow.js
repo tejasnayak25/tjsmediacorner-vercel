@@ -28,6 +28,13 @@ let alertwindow = {
             let btnsHolder = win.querySelector("#alert-btns");
             btnsHolder.innerHTML = "";
             btnsHolder.append(...btns);
+
+            if(btns.length > 0) {
+                btnsHolder.classList.add("py-4");
+            } else {
+                btnsHolder.classList.remove("py-4");
+            }
+
             if(btns.length === 1) {
                 btnsHolder.classList.add("justify-center");
             } else {
