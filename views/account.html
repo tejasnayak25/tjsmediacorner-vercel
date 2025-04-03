@@ -98,8 +98,8 @@
                         <p class=" md:text-2xl text-xl font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center md:justify-center justify-center">Account</p>
                         
 
-                        <div class=" flex-1 flex md:flex-row flex-col gap-5">
-                            <div class="w-full max-w-sm border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20">
+                        <div class=" flex-1 flex md:flex-row flex-col md:gap-5 gap-0">
+                            <div class="w-full max-w-sm border md:border-b border-b-0 border-gray-200 rounded-lg md:rounded-b-lg rounded-b-none shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20">
                                 <div class="flex justify-end px-4 pt-4">
                                     <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                                         <span class="sr-only">Open dropdown</span>
@@ -140,11 +140,11 @@
                                 </div>
                             </div>
     
-                            <div class="w-full max-w-sm flex flex-col gap-5">
-                                <div class="w-full max-w-sm md:min-w-sm min-w-full border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
+                            <div class="w-full max-w-sm flex flex-col md:gap-5 gap-0">
+                                <div class="w-full max-w-sm md:min-w-sm min-w-full border-x md:border-y border-y-0 border-gray-200 md:rounded-lg rounded-none shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
                                     <div class="  text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center justify-center p-3 gap-5">
                                         <p class="flex items-center justify-center gap-2 text-lg font-bold righteous-regular title">
-                                            Credits <i class="fi fi-sr-info" data-tooltip-target="tooltip-default"></i>
+                                            <span class="text-lg">Credits</span> <i class="fi fi-sr-info" data-tooltip-target="tooltip-default"></i>
                                         </p>
                                         <div class=" p-2 px-3 rounded-md bg-slate-100/60 dark:bg-slate-700/40 flex justify-center items-center gap-2">
                                             <i class="fi fi-sr-flame text-orange-300"></i>
@@ -152,7 +152,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full max-w-sm md:min-w-sm min-w-full md:flex-1 flex-auto border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
+                                <div class="w-full max-w-sm md:min-w-sm min-w-full md:flex-1 flex-auto border md:border-t border-t-0 border-gray-200 rounded-lg md:rounded-t-lg rounded-t-none shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
                                     <p class=" text-lg font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center justify-center p-3">Subscriptions</p>
                                     <div id="subscriptions-holder" class="hidden flex-nowrap px-5 py-2 mb-2 gap-3 overflow-x-auto relative subscription-container">
                                     </div>
@@ -187,6 +187,7 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.1/dist/browser-image-compression.js"></script>
     <script src="/js/anime.min.js"></script>
     <script src="/js/locomotive-scroll.min.js"></script>
     <script src="/js/theme.js"></script>
