@@ -47,220 +47,131 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const scroll = new LocomotiveScroll({
-        el: document.body,
-    });
-    
-    let lastProgress = -1; 
-    let lastScrollY = 0; // Track scroll direction
-    let bodyRect = document.body.getBoundingClientRect();
+    const mainScroll = window;
+    let lastScrollTop = 0;
     let isAnimating = false;
-    
-    document.getElementById("scroll-next").onclick = () => {
-        if (lastProgress === -1) lastProgress = 0.15;
-        
-        // Recalculate body height
-        let bodyHeight = document.body.getBoundingClientRect().height;
-    
-        lastProgress = Math.min(lastProgress + 0.15, 1); 
-    
-        scroll.scrollTo(lastProgress * bodyHeight, { 
-            duration: 800, 
-            easing: [0.25, 0.1, 0.25, 1] 
-        });
-    
-        console.log("Scrolling to:", lastProgress * bodyHeight);
-    };
-    
-    // Debounce function to reduce rapid scroll event handling
-    const debounce = (func, delay) => {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => func(...args), delay);
-        };
-    };
-
     let currentSection = 1;
-    let stepSize = window.innerHeight / 3;
+    let scrollHeight = document.getElementById("main-scroll").scrollHeight;
 
-    let autoscroll = false;
+    document.getElementById("scroll-next").onclick = () => {
+        window.scrollTo({
+            top: mainScroll.scrollY + 0.33 * scrollHeight,
+            behavior: "smooth"
+        });
+    }
+
+    mainScroll.addEventListener("scrollend", () => {
+        if (isAnimating) return;
+
+        requestAnimationFrame(() => {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let scrollProgress = (scrollTop / scrollHeight) * 100;
+
+            let progress = scrollProgress.toFixed(2);
+            console.log(`Scroll Progress: ${progress}%`);
+
+            let isScrollingDown = scrollTop > lastScrollTop;
+            console.log(isScrollingDown ? "Scrolling Down ⬇️" : "Scrolling Up ⬆️");
+
+            lastScrollTop = scrollTop; // Update after checking direction
+
+            animate(isScrollingDown);
+
+            if(progress < 20 && currentSection == 3) {
+                setTimeout(() => {
+                    animate(false);
+                }, 1000);
+            }
+            if(progress > 80 && currentSection == 1) {
+                setTimeout(() => {
+                    animate(true);
+                }, 1000);
+            }
+            
+        });
+    });
     
     const images = document.querySelectorAll(".prod-cover");
     const visibleImage = Array.from(images).filter(img => img.offsetParent !== null && getComputedStyle(img).display !== "none");
 
-    // Scroll event handler
-    scroll.on('scroll', debounce((args) => {
-        if (isAnimating) return;
-    
-        if (!visibleImage.length) return;
-    
-        let progress = Object.values(args.currentElements)[0]?.progress ?? 0; // Fix for getting progress correctly
-        let scrollDiff = Math.abs(progress - lastProgress);
-    
-        // Track scroll direction
-        let currentScrollY = window.scrollY;
-        let scrollingDown = currentScrollY > lastScrollY;
-        lastScrollY = currentScrollY;
-    
-        if (Math.abs(progress - lastProgress) < 0.05) return;
-        lastProgress = progress;
-    
-        console.log("Progress:", progress, "| Scrolling Down:", scrollingDown);
-    
-        animate(scrollingDown);
-        if(scrollDiff > (isMobile ? 0.7 : 0.4)) setTimeout(() => {
-            animate(scrollingDown);
-        }, 1000);
-    
-        console.log("Current Section:", currentSection);
-    }, 100)); // Debounce delay to prevent rapid firing
-    
     function animate(scrollingDown) {
+        if (isAnimating) return;
         isAnimating = true;
-        
-        if (currentSection === 1) {
-            if (scrollingDown) {
-                anime({
-                    targets: visibleImage[0],
-                    left: "-30rem",
-                    opacity: 0,
-                    duration: 400,
-                    easing: "easeOutQuad",
-                });
     
-                if (visibleImage.length > 1) {
-                    anime({
-                        targets: visibleImage[1],
-                        right: "-30rem",
-                        opacity: 0,
-                        duration: 400,
-                        easing: "easeOutQuad",
-                    });
-                }
+        const sections = [".t-holder", ".f-holder", ".c-holder"];
+        const images = visibleImage || [];
     
-                anime({
-                    targets: ".t-holder",
-                    opacity: 0,
-                    top: "-10rem",
-                    duration: 400,
-                    easing: "easeOutQuad",
-                    complete: () => {
-                        anime({
-                            targets: ".f-holder",
-                            opacity: 1,
-                            bottom: "0rem",
-                            duration: 400,
-                            easing: "easeOutQuad",
-                            complete: () => {
-                                isAnimating = false;
-                                currentSection++; // Update section AFTER animation
-                            }
-                        });
-                    }
-                });
-            } else {
-                isAnimating = false;
-            }
-        } else if (currentSection === 2) {
-            if (!scrollingDown) {
-                anime({
-                    targets: ".f-holder",
-                    opacity: 0,
-                    bottom: "-20rem",
-                    duration: 400,
-                    easing: "easeOutQuad",
-                    complete: () => {
-                        anime({
-                            targets: ".t-holder",
-                            opacity: 1,
-                            top: 0,
-                            duration: 400,
-                            easing: "easeOutQuad",
-                            complete: () => {
-                                isAnimating = false;
-                                currentSection--; // Update section AFTER animation
-                            }
-                        });
-    
-                        anime({
-                            targets: visibleImage[0],
-                            skewX: 12,
-                            skewY: -6,
-                            left: "-2rem",
-                            scale: 1,
-                            opacity: 1,
-                            duration: 400,
-                            easing: "easeOutQuad",
-                        });
-    
-                        if (visibleImage.length > 1) {
-                            anime({
-                                targets: visibleImage[1],
-                                skewX: -12,
-                                skewY: 6,
-                                right: "-2rem",
-                                scale: 1,
-                                opacity: 1,
-                                duration: 400,
-                                easing: "easeOutQuad",
-                            });
-                        }
-                    }
-                });
-            } else {
-                anime({
-                    targets: ".f-holder",
-                    opacity: 0,
-                    bottom: "20rem",
-                    duration: 400,
-                    easing: "easeOutQuad",
-                    complete: () => {
-                        anime({
-                            targets: ".c-holder",
-                            opacity: 1,
-                            bottom: "0rem",
-                            duration: 400,
-                            easing: "easeOutQuad",
-                            complete: () => {
-                                isAnimating = false;
-                                currentSection++;
-                            }
-                        });
-                    }
-                });
-    
-                document.getElementById("scroll-next").classList.add("hidden");
-            }
-        } else if(currentSection === 3) {
-            if(!scrollingDown) {
-                anime({
-                    targets: ".c-holder",
-                    opacity: 0,
-                    bottom: "-20rem",
-                    duration: 400,
-                    easing: "easeOutQuad",
-                    complete: () => {
-                        anime({
-                            targets: ".f-holder",
-                            opacity: 1,
-                            bottom: "0rem",
-                            duration: 400,
-                            easing: "easeOutQuad",
-                            complete: () => {
-                                isAnimating = false;
-                                currentSection--;
-                            }
-                        });
-                    }
-                });
-    
-                document.getElementById("scroll-next").classList.remove("hidden");
-            } else {
-                isAnimating = false;
-            }
+        function hideElement(targets, properties, callback) {
+            anime({
+                targets,
+                ...properties,
+                duration: 400,
+                easing: "easeOutQuad",
+                complete: callback || (() => { isAnimating = false; }),
+            });
         }
-    } 
+    
+        function showElement(targets, properties, callback) {
+            anime({
+                targets,
+                ...properties,
+                duration: 400,
+                easing: "easeOutQuad",
+                complete: callback || (() => { isAnimating = false; }),
+            });
+        }
+    
+        // Section 1 ➝ Section 2
+        if (currentSection === 1 && scrollingDown) {
+            hideElement(images[0], { left: "-30rem", opacity: 0 });
+            if (images.length > 1) hideElement(images[1], { right: "-30rem", opacity: 0 });
+    
+            hideElement(sections[0], { opacity: 0, top: "-10rem" }, () => {
+                showElement(sections[1], { opacity: 1, bottom: "0rem" }, () => {
+                    currentSection++;
+                });
+            });
+    
+        // Section 2 ➝ Section 1 (Scrolling Up)
+        } else if (currentSection === 2 && !scrollingDown) {
+            hideElement(sections[1], { opacity: 0, bottom: "-20rem" }, () => {
+                showElement(sections[0], { opacity: 1, top: "0rem" }, () => {
+                    currentSection--;
+                });
+    
+                showElement(images[0], { skewX: 12, skewY: -6, left: "-2rem", scale: 1, opacity: 1 });
+                if (images.length > 1) {
+                    showElement(images[1], { skewX: -12, skewY: 6, right: "-2rem", scale: 1, opacity: 1 });
+                }
+            });
+    
+        // Section 2 ➝ Section 3
+        } else if (currentSection === 2 && scrollingDown) {
+            hideElement(sections[1], { opacity: 0, bottom: "20rem" }, () => {
+                showElement(sections[2], { opacity: 1, bottom: "0rem" }, () => {
+                    currentSection++;
+                });
+            });
+    
+            document.getElementById("scroll-next").classList.add("hidden");
+    
+        // Section 3 ➝ Section 2 (Scrolling Up)
+        } else if (currentSection === 3 && !scrollingDown) {
+            hideElement(sections[2], { opacity: 0, bottom: "-20rem" }, () => {
+                showElement(sections[1], { opacity: 1, bottom: "0rem" }, () => {
+                    currentSection--;
+                });
+            });
+    
+            document.getElementById("scroll-next").classList.remove("hidden");
+        }
+    
+        // Unlock animation flag after the transition
+        setTimeout(() => { isAnimating = false; }, 450);
+    }
+    
+    
     
 });
 

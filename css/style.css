@@ -40,3 +40,7 @@
 .subscription-container:not(:has(:nth-child(n+3))) {
     justify-content: center;
 }
+
+[data-scroll-container] {
+    will-change: transform;
+}
