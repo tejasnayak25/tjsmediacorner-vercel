@@ -99,7 +99,7 @@
                         
 
                         <div class=" flex-1 flex md:flex-row flex-col md:gap-5 gap-0">
-                            <div class="w-full max-w-sm border md:border-b border-b-0 border-gray-200 rounded-lg md:rounded-b-lg rounded-b-none shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20">
+                            <div class="w-full max-w-sm border md:border-b border-b-0 border-gray-200 rounded-lg md:rounded-b-lg rounded-b-none md:shadow-sm shadow-none dark:border-gray-700 bg-white/20 dark:bg-black/20">
                                 <div class="flex justify-end px-4 pt-4">
                                     <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                                         <span class="sr-only">Open dropdown</span>
@@ -141,18 +141,18 @@
                             </div>
     
                             <div class="w-full max-w-sm flex flex-col md:gap-5 gap-0">
-                                <div class="w-full max-w-sm md:min-w-sm min-w-full border-x md:border-y border-y-0 border-gray-200 md:rounded-lg rounded-none shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
+                                <div class="w-full max-w-sm md:min-w-sm min-w-full border-x md:border-y border-y-0 border-gray-200 md:rounded-lg rounded-none md:shadow-sm shadow-none dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
                                     <div class="  text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center justify-center p-3 gap-5">
                                         <p class="flex items-center justify-center gap-2 text-lg font-bold righteous-regular title">
                                             <span class="text-lg">Credits</span> <i class="fi fi-sr-info" data-tooltip-target="tooltip-default"></i>
                                         </p>
-                                        <div class=" p-2 px-3 rounded-md bg-slate-100/60 dark:bg-slate-700/40 flex justify-center items-center gap-2">
-                                            <i class="fi fi-sr-flame text-orange-300"></i>
+                                        <div class=" text-orange-400 dark:text-orange-300 p-2 px-3 rounded-md bg-slate-100/60 dark:bg-slate-700/40 flex justify-center items-center gap-2">
+                                            <i class="fi fi-sr-flame"></i>
                                             <span id="tokens">0</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full max-w-sm md:min-w-sm min-w-full md:flex-1 flex-auto border md:border-t border-t-0 border-gray-200 rounded-lg md:rounded-t-lg rounded-t-none shadow-sm dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
+                                <div class="w-full max-w-sm md:min-w-sm min-w-full md:flex-1 flex-auto border md:border-t border-t-0 border-gray-200 rounded-lg md:rounded-t-lg rounded-t-none md:shadow-sm shadow-none dark:border-gray-700 bg-white/20 dark:bg-black/20 flex flex-col py-2 justify-center">
                                     <p class=" text-lg font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center justify-center p-3">Subscriptions</p>
                                     <div id="subscriptions-holder" class="hidden flex-nowrap px-5 py-2 mb-2 gap-3 overflow-x-auto relative subscription-container">
                                     </div>
@@ -195,6 +195,6 @@
     <script src="/js/navbar.js"></script>
     <script src="/js/alertwindow.js"></script>
     <!-- <script src="../js/home.js"></script> -->
-     <script type="module" src="/js/account.min.js"></script>
+    <script type="module" src="/js/account.min.js"></script>
 </body>
 </html>

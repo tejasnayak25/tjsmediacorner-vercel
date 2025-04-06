@@ -125,6 +125,16 @@ app.route("/about")
     res.sendFile(path.join(__dirname, "..", "views", "about.html"));
 });
 
+app.route("/apps")
+.get((req, res) => {
+    res.sendFile(path.join(__dirname, "..", "views", "apps.html"));
+});
+
+app.route("/apps/:name")
+.get((req, res) => {
+    res.sendFile(path.join(__dirname, "..", "views", "app-details.html"));
+});
+
 app.route("/membership/monthly-refresh")
 .get(async (req, res) => {
     let fapp = null;
