@@ -99,17 +99,17 @@
                         <p class=" md:text-2xl text-xl font-bold righteous-regular title text-slate-900 dark:text-slate-400 relative w-full text-center flex items-center md:justify-center justify-center">Pricing</p>
                         <div class="w-full flex justify-center p-3">
                             <label class="inline-flex items-center cursor-pointer">
-                                <span class="me-3 text-sm font-medium text-gray-900 dark:text-gray-300">Monthly</span>
+                                <span class="me-3 text-base font-medium text-gray-900 dark:text-gray-400">Monthly</span>
                                 <input id="cycle" type="checkbox" value="" class="sr-only peer">
                                 <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
-                                <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Yearly</span>
+                                <span class="ms-3 text-base font-medium text-gray-900 dark:text-gray-400">Yearly</span>
                             </label>
                         </div>
-                        <div class="flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center md:gap-6 gap-10 mt-5 md:w-auto w-full">
-                            <div class="border-2 border-transparent bg-gradient-to-r from-amber-400 to-amber-600 p-1 rounded-xl md:min-w-80 min-w-full w-full max-w-sm">
+                        <div class="flex md:flex-row flex-col lg:justify-center md:justify-start justify-start md:items-start items-center md:gap-10 gap-6 mt-5 md:w-auto w-full">
+                            <div class="border-2 border-transparent bg-gradient-to-r from-green-400 to-green-600 p-1 rounded-xl md:min-w-80 min-w-full w-full max-w-sm">
                                 <div
-                                    class="w-full max-w-sm p-4 from-amber-200 dark:from-slate-900 to-slate-100 dark:to-black bg-gradient-to-br rounded-lg shadow-md sm:p-8">
-                                    <h5 class="mb-4 text-xl font-semibold text-amber-600 dark:text-amber-400">Free Tier</h5>
+                                    class="w-full max-w-sm p-4 from-green-200 dark:from-slate-900 to-slate-100 dark:to-black bg-gradient-to-br rounded-lg shadow-md sm:p-8">
+                                    <h5 class="mb-4 text-xl font-semibold text-green-600 dark:text-green-400">Free Tier</h5>
                                     
                                     <div class="flex items-baseline text-gray-900 dark:text-white">
                                         <span class="text-3xl font-semibold">$</span>
@@ -117,7 +117,7 @@
                                         <span class="ms-1 text-xl font-medium text-gray-700 dark:text-gray-400 cycle">/month</span>
                                     </div>
 
-                                    <ul role="list" class="space-y-5 my-7">
+                                    <ul role="list" class="space-y-5 my-7 mb-0">
                                         <!-- Features -->
                                         <li class="flex items-center">
                                             <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
@@ -131,7 +131,12 @@
                                             <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
                                             <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">AI Image Generation</span>
                                         </li>
+                                        <li class="flex items-center">
+                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">AI Prompt Enhance</span>
+                                        </li>
 
+                                        <p class=" pb-1 pt-4 font-semibold text-green-600 dark:text-green-400 flex gap-2 items-center">Lifetime Trials <i class="fi fi-sr-info" data-tooltip-target="tooltip-once-per-account"></i></p>
                                         <!-- Features NOT included -->
                                         <li class="flex items-center opacity-80">
                                             <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5 contrast-50" alt="Check">
@@ -139,138 +144,119 @@
                                         </li>
                                         <li class="flex items-center opacity-80">
                                             <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5 contrast-50" alt="Check">
+                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Image Variants (3 trials)</span>
+                                        </li>
+                                        <li class="flex items-center opacity-80">
+                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5 contrast-50" alt="Check">
                                             <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Background Removal (3 trials)</span>
                                         </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">API Access</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Complete documentation</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">24×7 support</span>
+                                        <li class="flex items-center opacity-80">
+                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5 contrast-50" alt="Check">
+                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Text-to-Speech (3 trials)</span>
                                         </li>
                                     </ul>
-
-                                    <button type="button"
-                                        class="text-white from-amber-400 to-amber-600 bg-gradient-to-r hover:from-amber-500 hover:to-amber-600 transition-all focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full">
-                                        Choose Plan
-                                    </button>
                                 </div>
                             </div>
 
-                            <div class="border-2 border-transparent bg-gradient-to-r from-yellow-300 to-yellow-500 p-1 rounded-xl scale-105 md:min-w-80 min-w-full w-full max-w-sm">
-                                <div
-                                    class="w-full max-w-sm p-4 from-yellow-200 dark:from-slate-900 to-slate-100 dark:to-black bg-gradient-to-br rounded-lg shadow-md sm:p-8">
-                                    <h5 class="mb-4 text-xl font-semibold text-yellow-600 dark:text-yellow-400">Gold Tier</h5>
-                                    
-                                    <div class="flex items-baseline text-gray-900 dark:text-white">
-                                        <span class="text-3xl font-semibold">$</span>
-                                        <span class="text-5xl font-extrabold tracking-tight amount">3</span>
-                                        <span class="ms-1 text-xl font-medium text-gray-700 dark:text-gray-400 cycle">/month</span>
+                            <div class="flex md:flex-row flex-col-reverse md:justify-center justify-start md:items-start items-center md:gap-10 gap-6">
+                                <div class="border-2 border-transparent bg-gradient-to-r from-yellow-300 to-yellow-500 p-1 rounded-xl md:scale-110 scale-100 mt-3 md:min-w-80 min-w-full w-full max-w-sm">
+                                    <div
+                                        class="w-full max-w-sm p-4 from-yellow-200 dark:from-slate-900 to-slate-100 dark:to-black bg-gradient-to-br rounded-lg shadow-md sm:p-8">
+                                        <h5 class="mb-4 text-xl font-semibold text-yellow-600 dark:text-yellow-400">Gold Tier</h5>
+                                        
+                                        <div class="flex items-baseline text-gray-900 dark:text-white">
+                                            <span class="text-3xl font-semibold">$</span>
+                                            <span class="text-5xl font-extrabold tracking-tight amount">3</span>
+                                            <span class="ms-1 text-xl font-medium text-gray-700 dark:text-gray-400 cycle">/month</span>
+                                        </div>
+    
+                                        <ul role="list" class="space-y-5 my-7">
+                                            <!-- Features -->
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3 flex gap-1 items-center">100 <i class="fi fi-sr-info" data-tooltip-target="tooltip-free"></i> + 100 Credits</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Everything in Silver Tier</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Text-to-Speech</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3 flex gap-2 items-center">Export to Screenplay <i class="fi fi-sr-info" data-tooltip-target="tooltip-snote"></i></span>
+                                            </li>
+    
+                                            <!-- Features NOT included -->
+                                            <!-- <li class="flex items-center line-through opacity-80">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
+                                                <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Sketch Files</span>
+                                            </li> -->
+                                        </ul>
+    
+                                        <button type="button"
+                                            class="cursor-pointer text-white from-yellow-400 to-yellow-600 bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-600 transition-all focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full">
+                                            Choose Plan
+                                        </button>
                                     </div>
-
-                                    <ul role="list" class="space-y-5 my-7">
-                                        <!-- Features -->
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3 flex gap-1 items-center">100 <i class="fi fi-sr-info" data-tooltip-target="tooltip-free"></i> + 100 Credits</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Everything in Free Tier</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">No Watermark</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Background Removal</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Image Multiview</span>
-                                        </li>
-
-                                        <!-- Features NOT included -->
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Sketch Files</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">API Access</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Complete documentation</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">24×7 support</span>
-                                        </li>
-                                    </ul>
-
-                                    <button type="button"
-                                        class="text-white from-yellow-400 to-yellow-600 bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-600 transition-all focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full">
-                                        Choose Plan
-                                    </button>
                                 </div>
-                            </div>
-
-                            <div class="border-2 border-transparent bg-gradient-to-r from-slate-400 to-slate-600 p-1 rounded-xl md:min-w-80 min-w-full w-full max-w-sm">
-                                <div
-                                    class="w-full max-w-sm p-4 from-slate-200 dark:from-slate-900 to-slate-100 dark:to-black bg-gradient-to-br rounded-lg shadow-md sm:p-8">
-                                    <h5 class="mb-4 text-xl font-semibold text-slate-600 dark:text-slate-400">Silver Tier</h5>
-                                    
-                                    <div class="flex items-baseline text-gray-900 dark:text-white">
-                                        <span class="text-3xl font-semibold">$</span>
-                                        <span class="text-5xl font-extrabold tracking-tight amount">2</span>
-                                        <span class="ms-1 text-xl font-medium text-gray-700 dark:text-gray-400 cycle">/month</span>
+    
+                                <div class="border-2 border-transparent bg-gradient-to-r from-slate-400 to-slate-600 p-1 rounded-xl md:min-w-80 min-w-full w-full max-w-sm">
+                                    <div
+                                        class="w-full max-w-sm p-4 from-slate-200 dark:from-slate-900 to-slate-100 dark:to-black bg-gradient-to-br rounded-lg shadow-md sm:p-8">
+                                        <h5 class="mb-4 text-xl font-semibold text-slate-600 dark:text-slate-400">Silver Tier</h5>
+                                        
+                                        <div class="flex items-baseline text-gray-900 dark:text-white">
+                                            <span class="text-3xl font-semibold">$</span>
+                                            <span class="text-5xl font-extrabold tracking-tight amount">2</span>
+                                            <span class="ms-1 text-xl font-medium text-gray-700 dark:text-gray-400 cycle">/month</span>
+                                        </div>
+    
+                                        <ul role="list" class="space-y-5 my-7">
+                                            <!-- Features -->
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3 flex gap-1 items-center">100 <i class="fi fi-sr-info" data-tooltip-target="tooltip-free2"></i> + 50 Credits</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3 flex gap-2 items-center">Everything in Free Tier <i class="fi fi-sr-info" data-tooltip-target="tooltip-better-model"></i></span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">No Watermark</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Background Removal</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Image Multiview</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
+                                                <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Image Variants</span>
+                                            </li>
+    
+                                            <!-- Features NOT included -->
+                                            <li class="flex items-center line-through opacity-80">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
+                                                <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Text-to-Speech</span>
+                                            </li>
+                                            <li class="flex items-center line-through opacity-80">
+                                                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
+                                                <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Export to Screenplay</span>
+                                            </li>
+                                        </ul>
+    
+                                        <button type="button"
+                                            class="cursor-pointer text-white from-slate-400 to-slate-600 bg-gradient-to-r hover:from-slate-500 hover:to-slate-600 transition-all focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full">
+                                            Choose Plan
+                                        </button>
                                     </div>
-
-                                    <ul role="list" class="space-y-5 my-7">
-                                        <!-- Features -->
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">2 team members</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">20GB Cloud storage</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" class="shrink-0 w-5 h-5" alt="Check">
-                                            <span class="text-base font-medium text-gray-700 dark:text-gray-300 ms-3">Integration help</span>
-                                        </li>
-
-                                        <!-- Features NOT included -->
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Sketch Files</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">API Access</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">Complete documentation</span>
-                                        </li>
-                                        <li class="flex items-center line-through opacity-80">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828665.png" class="shrink-0 w-4 h-4" alt="Cross">
-                                            <span class="text-base font-normal text-gray-700 dark:text-gray-400 ms-3">24×7 support</span>
-                                        </li>
-                                    </ul>
-
-                                    <button type="button"
-                                        class="text-white from-slate-400 to-slate-600 bg-gradient-to-r hover:from-slate-500 hover:to-slate-600 transition-all focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full">
-                                        Choose Plan
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -283,6 +269,26 @@
 
     <div id="tooltip-free" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700 max-w-40 text-center">
         Free
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tooltip-free2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700 max-w-40 text-center">
+        Free
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tooltip-once-per-account" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700 max-w-40 text-center">
+        Redeemed once per account
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tooltip-snote" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700 max-w-40 text-center">
+        Storynote
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tooltip-better-model" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700 max-w-40 text-center">
+        Better Models
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
     
