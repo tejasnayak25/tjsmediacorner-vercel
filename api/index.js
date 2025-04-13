@@ -193,7 +193,16 @@ app.route("/membership/monthly-refresh")
         });
     });
 
-    await Promise.all([adminQuery, freeQuery]);
+    let allMembers = users.get()
+    .then(docs => {
+        docs.forEach(doc => {
+            batch.update(doc.ref, {
+                image_count_this_month: 0
+            });
+        });
+    });
+
+    await Promise.all([adminQuery, freeQuery, allMembers]);
 
         // Commit the batch only after all updates are added
         // await batch.commit();
